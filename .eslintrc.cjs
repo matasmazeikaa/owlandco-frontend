@@ -48,33 +48,33 @@ module.exports = {
 		'unicorn',
 	],
 	rules: {
-		// // Import rules
-		// 'import/newline-after-import': ['error'],
-		// 'import/order': [
-		// 	'error',
-		// 	{
-		// 		'newlines-between': 'always',
-		// 		groups: [
-		// 			'builtin',
-		// 			'external',
-		// 			'internal',
-		// 			'sibling',
-		// 			'parent',
-		// 		],
-		// 		alphabetize: {
-		// 			order: 'asc',
-		// 		},
-		// 	},
-		// ],
-		// 'import/prefer-default-export': 'off',
+		// Import rules
+		'import/newline-after-import': ['error'],
+		'import/order': [
+			'error',
+			{
+				'newlines-between': 'always',
+				groups: [
+					'builtin',
+					'external',
+					'internal',
+					'sibling',
+					'parent',
+				],
+				alphabetize: {
+					order: 'asc',
+				},
+			},
+		],
+		'import/prefer-default-export': 'off',
 		// 'modules-newline/import-declaration-newline': 'error',
-		// 'modules-newline/export-declaration-newline': 'error',
-		// 'no-restricted-imports': [
-		// 	'error',
-		// 	{
-		// 		patterns: ['..*'],
-		// 	},
-		// ],
+		'modules-newline/export-declaration-newline': 'error',
+		'no-restricted-imports': [
+			'error',
+			{
+				patterns: ['..*'],
+			},
+		],
 
 		// Unicorn rules
 		'unicorn/empty-brace-spaces': 'error',
@@ -219,14 +219,42 @@ module.exports = {
 		],
 		'destructure-depth/max-depth': ['error'],
 		'class-methods-use-this': 'off',
-		'max-len': [
+		'import/no-extraneous-dependencies': 'off',
+		'vue/max-len': [
 			'error',
 			{
 				code: 140,
+				template: 9999,
+				tabWidth: 2,
+				comments: 80,
+				ignorePattern: '',
+				ignoreComments: false,
+				ignoreTrailingComments: false,
+				ignoreUrls: false,
 				ignoreStrings: true,
-				ignoreUrls: true,
-				ignorePattern: '^import .*',
-				ignoreRegExpLiterals: true,
+				ignoreTemplateLiterals: true,
+				ignoreRegExpLiterals: false,
+				ignoreHTMLAttributeValues: false,
+				ignoreHTMLTextContents: false,
+			},
+		],
+		'vue/html-closing-bracket-newline': [
+			'error',
+			{
+				singleline: 'never',
+				multiline: 'always',
+			},
+		],
+
+		'vue/max-attributes-per-line': [
+			'error',
+			{
+				singleline: {
+					max: 1,
+				},
+				multiline: {
+					max: 1,
+				},
 			},
 		],
 
@@ -240,6 +268,7 @@ module.exports = {
 				ignores: [],
 			},
 		],
+		'vue/multi-word-component-names': 'off',
 		'vue/html-indent': [
 			'error',
 			'tab',
@@ -278,10 +307,15 @@ module.exports = {
 			},
 		],
 
+		'import/extensions': 'off',
+
+		'vue/no-multiple-template-root': 'off',
+
 		// Miscellaneous
 		'vue/no-v-html': 'off',
 		'vue/attributes-order': ['error'],
-		'vue/max-len': 'off',
+		'max-len': 'off',
+
 		// @vue/airbnb config just extends airbnb-base config and overrides 'no-param-reassign' rule. Since this config extends airbnb-base
 		// by default already, there is no point in extending the whole @vue/airbnb config.
 		// Copying this override rule is sufficient enough.

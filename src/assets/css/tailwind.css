@@ -3,9 +3,154 @@
 @tailwind utilities;
 
 @layer base {
+	:root {
+		--primary-black: #181717;
+		--primary-golden-gradient: linear-gradient(169.09deg, #ae862e 26.88%, #f7ef89 52.95%, #d2ac47 78.25%, #edc968 101.25%);
+		--primary-yellow: #e5ce68;
+		--primary-purple: #260026;
+		--primary-white: #ffffff;
+		--secondary-davys-gray: #5b5757;
+		--secondary-french-gray: #c2b8c2;
+	}
+
+	#__nuxt {
+		height: 100%;
+	}
+
+	@font-face {
+		font-family: 'Satoshi Bold';
+		src: url(~/assets/fonts/Satoshi-Bold.woff2);
+		font-weight: 700;
+	}
+
+	@font-face {
+		font-family: 'Inter Regular';
+		src: url(~/assets/fonts/Inter-Regular.woff2);
+		font-weight: 400;
+	}
+
+	@font-face {
+		font-family: 'Inter SemiBold';
+		src: url(~/assets/fonts/Inter-SemiBold.woff2);
+		font-weight: 600;
+	}
+
+	html {
+		font-size: 62.5%;
+		font-family: 'Inter Regular';
+		font-weight: 400;
+		color: var(--primary-black);
+	}
+
+	button {
+		font-family: 'Inter SemiBold';
+		font-weight: 600;
+
+		@apply text-button;
+	}
+
+	h1 {
+		@apply text-h1-mobile;
+		font-family: 'Satoshi Bold';
+	}
+
+	h2 {
+		@apply text-h2-mobile;
+		font-family: 'Satoshi Bold';
+	}
+
+	h3 {
+		@apply text-h3-mobile;
+		font-family: 'Satoshi Bold';
+	}
+
+	h5 {
+		@apply text-h5-mobile;
+		font-family: 'Satoshi Bold';
+	}
+
+	h6 {
+		@apply text-h6-mobile;
+		font-family: 'Inter SemiBold';
+	}
+
+	@screen md {
+		h1 {
+			@apply text-h1;
+		}
+
+		h2 {
+			@apply text-h2;
+		}
+
+		h3 {
+			@apply text-h3;
+		}
+
+		h5 {
+			@apply text-h5;
+		}
+	}
 }
 
 @layer components {
+	.section-padding {
+		padding: 0 1.6rem;
+	}
+
+	.section-margin {
+		margin: 0 1.6rem;
+	}
+
+	.btn-primary {
+		@apply bg-primary-yellow px-24 py-16 rounded-full hover:opacity-80 transition-opacity text-primary-black w-full text-button font-bold;
+	}
+
+	.body-1-gray {
+		@apply text-body-1 text-gray;
+	}
+
+	.body-1-gray-french {
+		@apply text-body-1 text-gray-french;
+	}
+
+	.body-2-gray {
+		@apply text-body-2 text-gray;
+	}
+
+	.body-2-gray-french {
+		@apply text-body-2 text-gray-french;
+	}
+
+	.body-2-black {
+		@apply text-body-2 text-primary-black;
+	}
+
+	.body-1-white {
+		@apply text-body-1 text-white;
+	}
+
+	.separator-horizontal {
+		@apply w-[1px] bg-secondary-platinum h-full;
+	}
+
+	@screen md {
+		.section-padding {
+			padding: 0 4.2rem;
+		}
+
+		.section-margin {
+			margin: 0 4.2rem;
+		}
+
+		.btn-primary {
+			@apply w-auto;
+		}
+
+		.body-1-white {
+			@apply text-body-1-md text-white;
+		}
+	}
 }
 
 @layer utilities {

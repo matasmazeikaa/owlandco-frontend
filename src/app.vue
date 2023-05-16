@@ -1,9 +1,12 @@
 <template>
-	<Html lang="en" class="h-full">
+	<Html
+		lang="en"
+		class="h-full"
+	>
 		<Body class="h-full">
-			<NuxtLayout>
+			<NuxtLayout class="h-full">
 				<SeoKit />
-				<NuxtPage />
+				<NuxtPage class="h-full"/>
 			</NuxtLayout>
 		</Body>
 	</Html>

@@ -21,6 +21,8 @@ export default defineNuxtConfig({
 		modules: '~/modules',
 	},
 
+	css: ['~/assets/css/tailwind.css'],
+
 	// runtime config
 	runtimeConfig: {
 		public: {
@@ -59,48 +61,28 @@ export default defineNuxtConfig({
 		],
 	},
 
+	image: {
+		cloudinary: {
+			baseURL: 'https://res.cloudinary.com/ddcyo820z/image/upload/',
+		},
+	},
+
 	// modules
 	modules: [
-		'@nuxtjs/strapi',
-		'@formkit/nuxt',
-		'@nuxtjs/google-fonts',
 		'@nuxtjs/tailwindcss',
+		'@nuxt/image-edge',
+		'@formkit/nuxt',
 		'@pinia/nuxt',
 		'@unlighthouse/nuxt',
 		'@vueuse/nuxt',
 		'nuxt-headlessui',
 		'@nuxtjs/eslint-module',
+		'@nuxtjs/strapi',
+		'nuxt-swiper',
 	],
 
 	eslint: {
 		eslintPath: 'eslint',
-	},
-
-	// module options
-	// google fonts
-	googleFonts: {
-		families: {
-			Roboto: true,
-			Nunito: [500],
-			Raleway: [
-				400,
-				500,
-				600,
-				700,
-			],
-			Montserrat: [
-				400,
-				500,
-				600,
-				700,
-			],
-			'Open Sans': [
-				400,
-				500,
-				600,
-				700,
-			],
-		},
 	},
 
 	// headlessui
