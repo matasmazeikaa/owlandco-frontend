@@ -15,14 +15,29 @@ defineProps<Props>();
 		<div class="relative mx-auto text-white text-center flex justify main-bg">
 			<div class="main-bg-cover"/>
 			<div class="py-[4.4rem] md:py-120 container mx-auto z-[3] relative flex flex-col justify-center items-center">
-				<h1 class="mb-8 md:mb-24 max-w-[96rem]">
+				<h1
+					class="mb-8 md:mb-24 max-w-[96rem]"
+					data-aos="fade-up"
+
+					data-aos-delay="100"
+				>
 					{{ title }}
 				</h1>
-				<p class="body-1-white mb-24 md:mb-40 max-w-[55.6rem]">
+				<p
+					class="body-1-white mb-24 md:mb-40 max-w-[55.6rem]"
+					data-aos="fade-up"
+
+					data-aos-delay="200"
+				>
 					{{ subtitle }}
 				</p>
 
-				<div class="flex">
+				<div
+					class="flex"
+					data-aos="fade-up"
+
+					data-aos-delay="300"
+				>
 					<Button :to="ctaLink">{{ ctaText }}</Button>
 				</div>
 			</div>

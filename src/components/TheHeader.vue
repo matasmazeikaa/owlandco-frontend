@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import {
-	disableBodyScroll, enableBodyScroll, clearAllBodyScrollLocks,
+	disableBodyScroll, enableBodyScroll,
 } from 'body-scroll-lock';
 
 interface Props {
@@ -49,14 +49,17 @@ watch(isMobileMenuOpen, (value) => {
 				<NuxtLink
 					to="/"
 					class="w-[9.1rem] lg:w-[12.4rem] absolute lg:left-[6rem] -top-[1.6rem] lg:top-0 z-10 "
+					data-aos="slide-down"
 				>
 					<HeaderLogo class="w-full"/>
 				</NuxtLink>
 				<div class="lg:flex justify-between items-center ml-[20rem] w-full hidden">
 					<ul class="gap-32 hidden lg:flex">
 						<li
-							v-for="item in items"
+							v-for="(item, index) in items"
 							:key="item.title"
+							data-aos="fade-down"
+							:data-aos-delay="100 * (index + 1)"
 						>
 							<NuxtLink
 								:to="item.to"
@@ -71,10 +74,20 @@ watch(isMobileMenuOpen, (value) => {
 							to="/valuation"
 							white
 							class="mr-16"
+							data-aos="fade-down"
+
+							data-aos-delay="300"
 						>
 							Get valuation
 						</Button>
-						<Button to="/contact">Contact us</Button>
+						<Button
+							to="/contact"
+							data-aos="fade-down"
+
+							data-aos-delay="400"
+						>
+							Contact us
+						</Button>
 					</div>
 				</div>
 				<div
@@ -143,14 +156,6 @@ watch(isMobileMenuOpen, (value) => {
 
 .col:first-of-type {
   margin-left: 0;
-}
-
-.container{
-  width: 100%;
-  max-width: 940px;
-  margin: 0 auto;
-  position: relative;
-  text-align: center;
 }
 
 /* CLEARFIX */

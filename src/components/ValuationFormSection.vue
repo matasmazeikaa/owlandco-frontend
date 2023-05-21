@@ -72,13 +72,30 @@ const {
 <template>
 	<div class="section-padding items-center max-w-screen-xl mx-auto pt-48 md:pt-80 grid grid-cols-1 lg:grid-cols-2 gap-40 lg:gap-80">
 		<div class="flex flex-col mb-auto">
-			<h1 class="text-h4 md:text-h1 mb-8 md:mb-24">{{ VALUATION_FORM_SECTION.title }}</h1>
-			<p class="body-2-gray md:body-1-gray mb-24 md:mb-40">{{ VALUATION_FORM_SECTION.subtitle }}</p>
+			<h1
+				class="text-h4 md:text-h1 mb-8 md:mb-24"
+				data-aos="fade-right"
+
+				data-aos-delay="100"
+			>
+				{{ VALUATION_FORM_SECTION.title }}
+			</h1>
+			<p
+				class="body-2-gray md:body-1-gray mb-24 md:mb-40"
+				data-aos="fade-right"
+
+				data-aos-delay="200"
+			>
+				{{ VALUATION_FORM_SECTION.subtitle }}
+			</p>
 
 			<div class="flex flex-col gap-40">
 				<div
 					v-for="item in VALUATION_FORM_SECTION.items"
 					:key="item.title"
+					data-aos="fade-right"
+
+					data-aos-delay="300"
 				>
 					<img
 						:src="item.icon"
@@ -90,7 +107,12 @@ const {
 			</div>
 		</div>
 
-		<div class="py-48 px-16 md:px-48 bg-primary-purple rounded-[4rem] h-max relative">
+		<div
+			class="py-48 px-16 md:px-48 bg-primary-purple rounded-[4rem] h-max relative"
+			data-aos="fade-left"
+
+			data-aos-delay="500"
+		>
 			<div class="contact-form-background w-full h-full absolute top-0 left-0 pointer-events-none" />
 			<h2 class="mb-32 text-h4 md:text-h2 text-white">{{ hasSubmited ?  "Thank you for your message, we will contact you shortly." : "Send us a message"}}</h2>
 			<FormKit

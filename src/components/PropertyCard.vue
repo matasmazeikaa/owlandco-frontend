@@ -1,5 +1,8 @@
 <script lang="ts" setup>
 import { IProperty } from '~/types';
+import {
+	SwiperAutoplay, SwiperEffectCreative,
+} from '~~/.nuxt/imports';
 
 interface Props {
    property: IProperty;

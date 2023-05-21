@@ -66,8 +66,18 @@ fetchSubscribers();
 				v-else
 				class="relative z-10 mb-32 md:mb-40"
 			>
-				<h1 class="mb-16"> {{ SUBSCRIBE_SECTION.title }} </h1>
-				<p class="text-secondary-french-gray body-2-gray-french md:text-body-1 mx-auto max-w-[55.6rem] mb-32 md:mb-40">{{ SUBSCRIBE_SECTION.subtitle }}</p>
+				<h1
+					class="mb-16"
+					data-aos="fade-up"
+				>
+					{{ SUBSCRIBE_SECTION.title }}
+				</h1>
+				<p
+					class="text-secondary-french-gray body-2-gray-french md:text-body-1 mx-auto max-w-[55.6rem] mb-32 md:mb-40"
+					data-aos="fade-up"
+				>
+					{{ SUBSCRIBE_SECTION.subtitle }}
+				</p>
 				<FormKit
 					type="form"
 					:classes="{ form: 'flex flex-col items-baseline md:flex-row justify-center gap-16 ' }"
@@ -76,6 +86,8 @@ fetchSubscribers();
 						ignore: true
 					}"
 					help=""
+					data-aos="fade-up"
+
 					@submit="submitForm"
 				>
 					<div class="hidden">
@@ -103,7 +115,10 @@ fetchSubscribers();
 					</Button>
 				</FormKit>
 			</div>
-			<div class="flex justify-center text-left">
+			<div
+				class="flex justify-center text-left"
+				data-aos="fade-up"
+			>
 				<NuxtImg
 					class="mr-16 w-120"
 					src="/assets/images/subscribed-people.png"

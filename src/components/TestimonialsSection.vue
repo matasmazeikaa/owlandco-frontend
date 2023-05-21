@@ -46,7 +46,10 @@ const setControlledSwiper = (swiper: any) => {
 				src="/assets/icons/quote.svg"
 				alt=""
 			/>
-			<div class="max-w-[80rem] text-left">
+			<div
+				class="max-w-[80rem] text-left"
+				data-aos="fade-up"
+			>
 				<Swiper
 					:slides-per-view="1"
 					loop

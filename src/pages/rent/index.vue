@@ -6,6 +6,10 @@ import {
 const RENT_PAGE_HERO_SECTION = {
 	title: 'Find the best property to rent for your family',
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
+	ctaText: 'Get valuation',
+	ctaLink: '/valuation',
+	backgroundImage: '~/assets/images/page-about-us-hero-cover.png',
+
 };
 
 const searchIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -137,23 +141,14 @@ console.log(totalProperties, 'total properties');
 </script>
 
 <template>
-	<div class="section-padding">
-		<div class="relative mx-auto text-white text-center flex justify main-bg">
-			<div class="main-bg-cover"/>
-			<div class="py-[4.4rem] md:py-120 container mx-auto z-[3] relative flex flex-col justify-center items-center">
-				<h1 class="mb-8 md:mb-24 max-w-[80rem]">
-					{{ RENT_PAGE_HERO_SECTION.title }}
-				</h1>
-				<p class="body-1-white mb-24 md:mb-40 max-w-[55.6rem]">
-					{{ RENT_PAGE_HERO_SECTION.subtitle }}
-				</p>
-
-				<div class="flex mb-24">
-					<Button>Get valuation</Button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<SectionSimpleHero
+		:title="RENT_PAGE_HERO_SECTION.title"
+		:subtitle="RENT_PAGE_HERO_SECTION.subtitle"
+		:cta-link="RENT_PAGE_HERO_SECTION.ctaLink"
+		:cta-text="RENT_PAGE_HERO_SECTION.ctaText"
+		:background-image="RENT_PAGE_HERO_SECTION.backgroundImage"
+		class="!mb-0"
+	/>
 
 	<div
 		id="rent-search"

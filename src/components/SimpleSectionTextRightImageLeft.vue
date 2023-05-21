@@ -16,13 +16,24 @@ defineProps<Props>();
 					class='rounded-[4rem] w-full'
 					:src="image"
 					alt="people sitting in a house"
+					data-aos="fade-up"
 				/>
 			</div>
 
 			<div class="ml-auto md:w-5/12">
 				<div >
-					<h2 class="text-h4 mb-16 md:text-h3">{{ title }}</h2>
-					<p class="body-2-gray md:body-1-gray">{{ subtitle }}</p>
+					<h2
+						class="text-h4 mb-16 md:text-h3"
+						data-aos="fade-up"
+					>
+						{{ title }}
+					</h2>
+					<p
+						class="body-2-gray md:body-1-gray"
+						data-aos="fade-up"
+					>
+						{{ subtitle }}
+					</p>
 				</div>
 			</div>
 		</div>

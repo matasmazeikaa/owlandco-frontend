@@ -1,4 +1,9 @@
 <script lang="ts" setup>
+import gsap from 'gsap';
+import {
+	ref, reactive, watch,
+} from 'vue';
+
 interface Props {
 	items: {
 		title: string;
@@ -7,23 +12,97 @@ interface Props {
 }
 
 defineProps<Props>();
+
+const propertiesForRent = reactive({
+	number: 0,
+});
+const propertiesForSale = reactive({
+	number: 0,
+});
+const propertyValuations = reactive({
+	number: 0,
+});
+const completedInvestments = reactive({
+	number: 0,
+});
+
+const propertiesForRentChange = ref(0);
+const propertiesForSaleChange = ref(0);
+const propertyValuationsChange = ref(0);
+const completedInvestmentsChange = ref(0);
+
+watch(propertiesForRentChange, (n) => {
+	gsap.to(propertiesForRent, {
+		duration: 4,
+		number: Number(n) || 0,
+	});
+});
+
+watch(propertiesForSaleChange, (n) => {
+	gsap.to(propertiesForSale, {
+		duration: 4,
+		number: Number(n) || 0,
+	});
+});
+
+watch(propertyValuationsChange, (n) => {
+	gsap.to(propertyValuations, {
+		duration: 4,
+		number: Number(n) || 0,
+	});
+});
+
+watch(completedInvestmentsChange, (n) => {
+	gsap.to(completedInvestments, {
+		duration: 4,
+		number: Number(n) || 0,
+	});
+});
+
+onMounted(() => {
+	propertiesForRentChange.value = 75;
+	propertiesForSaleChange.value = 42;
+	propertyValuationsChange.value = 562;
+	completedInvestmentsChange.value = 2.5;
+});
 </script>
 
 <template>
-	<div class="grid grid-cols-2 gap-y-16 gap-x-32 justify-center md:gap-0 md:flex mx-auto w-fit backdrop-blur-sm bg-white bg-opacity-10 rounded-[2.4rem] p-16 md:py-20 md:px-36">
+	<div class="grid grid-cols-2 xl:min-w-[112rem] gap-y-16 lg:grid-cols-4 w-full place-items-center backdrop-blur-sm bg-white bg-opacity-10 rounded-[2.4rem] p-16 md:py-20 md:px-36">
 		<div
-			v-for="(item, index) in items"
-			:key="item.title"
-			class="text-center flex items-center relative md:after:hidden after:even:hidden after:box-content after:w-[0.5px] after:h-[40px] after:absolute after:-right-16 after:bg-white"
+			class="text-center justify-center w-full flex items-center relative"
 		>
 			<div>
-				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ item.value }}</h3>
-				<p class="button-1 lowercase">{{ item.title }}</p>
+				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForRent.number.toFixed(0) }}</h3>
+				<p class="button-1 lowercase">properties for rent</p>
 			</div>
-			<div
-				v-if="index !== items.length - 1"
-				class="separator hidden md:block"
-			/>
+			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem]"/>
+		</div>
+		<div
+			class="text-center justify-center w-full flex items-center relative"
+		>
+			<div>
+				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForSale.number.toFixed(0) }}</h3>
+				<p class="button-1 lowercase">properties for sale</p>
+			</div>
+			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem] hidden lg:block"/>
+		</div>
+		<div
+			class="text-center justify-center w-full flex items-center relative"
+		>
+			<div>
+				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertyValuations.number.toFixed(0) }}+</h3>
+				<p class="button-1 lowercase">property valuations</p>
+			</div>
+			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem]"/>
+		</div>
+		<div
+			class="text-center justify-center w-full flex items-center relative"
+		>
+			<div>
+				<h3 class="text-h5 md:text-h3 whitespace-nowrap">£{{ completedInvestments.number.toFixed(1) }}M</h3>
+				<p class="button-1 lowercase">completed investments</p>
+			</div>
 		</div>
 	</div>
 </template>
