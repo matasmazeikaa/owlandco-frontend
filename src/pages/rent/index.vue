@@ -1,12 +1,7 @@
 <script setup lang="ts">
-import { IProperty } from '~/types';
-
-export interface PaginationByPage {
-  page: number
-  pageSize: number
-  total: number;
-  withCount?: boolean
-}
+import {
+	IProperty, PaginationByPage,
+} from '~/types';
 
 const RENT_PAGE_HERO_SECTION = {
 	title: 'Find the best property to rent for your family',
@@ -46,9 +41,10 @@ const { find } = useStrapi();
 
 const propertySearch = ref('');
 const propertySort = ref('asc');
+const totalProperties = ref(0);
 
 const { data: properties } = await useAsyncData(
-	'restaurant',
+	'rentProperties',
 	() => find<IProperty>('properties', {
 		populate: 'images',
 		filters: {
@@ -63,24 +59,27 @@ const { data: properties } = await useAsyncData(
 	}),
 );
 
+console.log(properties);
+
 const {
 	currentPage,
 	currentPageSize,
-	isFirstPage,
-	isLastPage,
 	pageCount,
 	next: nextPage,
 	prev: prevPage,
 } = useOffsetPagination({
 	page: 1,
 	pageSize: 9,
-	total: (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1,
+	total: totalProperties,
 });
 
 const fetchProperties = async () => {
 	console.log(propertySort.value);
 
-	const { data } = await find<IProperty>('properties', {
+	const {
+		data,
+		meta,
+	} = await find<IProperty>('properties', {
 		populate: 'images',
 		filters: {
 			address: {
@@ -96,13 +95,17 @@ const fetchProperties = async () => {
 		},
 	});
 
+	console.log(meta);
+
+	totalProperties.value = (meta?.pagination as PaginationByPage)?.total ?? 1;
+
 	properties.value = {
 		...properties.value,
 		data,
 	};
 };
 
-const totalProperties = computed((): number => (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1);
+totalProperties.value = (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1;
 
 const handlePropertySearch = async (value: string) => {
 	propertySearch.value = value;
@@ -113,6 +116,8 @@ const handlePropertySort = (value: string) => {
 };
 
 watch(propertySearch, () => {
+	currentPage.value = 1;
+
 	fetchProperties();
 });
 
@@ -154,9 +159,9 @@ console.log(totalProperties, 'total properties');
 		id="rent-search"
 		class="section-padding pt-40 pb-64 md:pb-120 md:pt-80"
 	>
-		<div class="flex justify-between items-center mb-40 md:mb-56">
-			<div class="flex items-center justify-center">
-				<p class="text-body-3  md:text-body-2 mr-16">Search by street name</p>
+		<div class="mx-auto max-w-screen-xl flex flex-col lg:flex-row gap-16 lg:justify-between items-start lg:items-center mb-40 md:mb-56">
+			<div class="flex flex-col lg:flex-row items-start lg:items-center justify-center">
+				<p class="text-body-3  md:text-body-2 mr-16 mb-12 lg:mb-0">Search by street name</p>
 				<FormKit
 					outer-class="max-w-[40rem]"
 					:prefix-icon="searchIcon"
@@ -168,8 +173,8 @@ console.log(totalProperties, 'total properties');
 				/>
 			</div>
 
-			<div class="flex items-center justify-center mr-16">
-				<p class="text-body-3 md:text-body-2 mr-16">Sort by</p>
+			<div class="flex flex-col lg:flex-row items-start lg:items-center justify-center mr-16">
+				<p class="text-body-3 md:text-body-2 mb-12 lg:mb-0 mr-16">Sort by</p>
 				<FormKit
 					type="select"
 					name="filter"

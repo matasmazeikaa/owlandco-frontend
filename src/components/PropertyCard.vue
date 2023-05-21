@@ -1,40 +1,18 @@
 <script lang="ts" setup>
-import * as dayjs from 'dayjs';
-import advancedFormat from 'dayjs/plugin/advancedFormat';
-
-import {
-	CapsuleBackground, IProperty,
-} from '~/types';
-
-dayjs.extend(advancedFormat);
+import { IProperty } from '~/types';
 
 interface Props {
    property: IProperty;
 }
 
-const props = defineProps<Props>();
+defineProps<Props>();
 
-const getDateFormat = (date: string) => {
-	const availableFrom = dayjs(date);
+const swiperInstance = useSwiper();
 
-	return `Available from 
-		${availableFrom.format('Do')} of 
-		${availableFrom.format('MMMM')} 
-		${availableFrom.format('YYYY')}
-		`;
+const controlledSwiper = ref<typeof swiperInstance>({});
+const setControlledSwiper = (swiper: any) => {
+	controlledSwiper.value = swiper;
 };
-
-const availability = computed((): { title: string, background: CapsuleBackground } => {
-	const isAvailable = new Date(props.property.availableFrom) > new Date();
-
-	return isAvailable ? {
-		title: 'Available',
-		background: 'yellow',
-	} : {
-		title: getDateFormat(props.property.availableFrom),
-		background: 'gray',
-	};
-});
 </script>
 
 <template>
@@ -47,7 +25,7 @@ const availability = computed((): { title: string, background: CapsuleBackground
 			:slides-per-view="1"
 			loop
 			:effect="'creative'"
-			class="mb-24 h-[16.8rem] lg:h-[24rem] rounded-[1.6rem] overflow-hidden relative"
+			class="mb-24 h-[16.8rem] w-[24rem] lg:w-full lg:h-[24rem] rounded-[1.6rem] overflow-hidden relative"
 			:creative-effect="{
 				prev: {
 					shadow: false,
@@ -61,11 +39,14 @@ const availability = computed((): { title: string, background: CapsuleBackground
 					],
 				},
 			}"
+			@swiper="setControlledSwiper"
 		>
 			<Indicators
 				class="absolute bottom-16 left-0 z-[2] w-full justify-center items-center"
 				:length="property.images.data?.length"
 				size="12px"
+				:active-indicator-index="controlledSwiper.realIndex"
+				@on-click="controlledSwiper?.slideTo($event)"
 			/>
 			<SwiperSlide
 				v-for="image in property.images.data"
@@ -86,8 +67,7 @@ const availability = computed((): { title: string, background: CapsuleBackground
 		<div class="z-[3] relative text-white">
 			<Capsule
 				class="mb-20"
-				:title="availability.title"
-				:background="availability.background"
+				:availability="property.availableFrom"
 			/>
 			<h6 class="text-h6 mb-8">{{ property.address }}</h6>
 			<h5 class="text-h5 mb-16">£{{ property.price }} per month</h5>
@@ -110,12 +90,12 @@ const availability = computed((): { title: string, background: CapsuleBackground
 
 			<div class="flex items-center cursor-pointer text-gray-french hover:opacity-75 transition-opacity">
 				<NuxtLink
-					class="text-button text-gray-french mr-8"
+					class="text-button flex gap-8 text-gray-french mr-8"
 					:to="`/rent/${property.slug}`"
 				>
-					Learn more
+					<span>Learn more</span>
+					<ArrowRight class="text-button" />
 				</NuxtLink>
-				<ArrowRight class="mr-8 text-button" />
 			</div>
 		</div>
 	</div>

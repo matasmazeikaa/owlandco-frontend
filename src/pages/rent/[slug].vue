@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types';
+
 import { IProperty } from '~/types';
 
 export interface PaginationByPage {
@@ -20,31 +22,178 @@ const { slug } = route.params;
 
 console.log(route.params.slug);
 
-const { data: property } = await useAsyncData(
+const { data: properties } = await useAsyncData(
 	'properties',
 	() => find<IProperty>('properties', {
-		populate: 'images',
+		populate: [
+			'images',
+			'similarProperties',
+			'similarProperties.images',
+		],
 		filters: {
 			slug,
 		},
 	}),
 );
 
+const property = computed(() => properties?.value?.data[0].attributes as IProperty || {
+	images: {
+		data: [],
+	},
+	similarProperties: {
+		data: [],
+	},
+});
+
+const similarProperties = computed(() => property?.value?.similarProperties?.data ?? []);
+const images = computed(() => property?.value?.images?.data ?? []);
+
+const breadcrumbs = computed(() => [
+	{
+		name: 'Home',
+		to: '/',
+	},
+	{
+		name: 'Rent',
+		to: '/rent',
+	},
+	{
+		name: property.value.address,
+	},
+]);
+
+const swiperInstance = useSwiper();
+
+const controlledSwiper = ref<typeof swiperInstance>({});
+const setControlledSwiper = (swiper: any) => {
+	controlledSwiper.value = swiper;
+};
+
 console.log(property);
 </script>
 
 <template>
-	<div>
+	<div class="section-padding">
+		<Breadcrumbs :breadcrumbs="breadcrumbs" />
+		<div class="grid grid-cols-1 lg:grid-cols-2 gap-x-48 gap-y-40 max-w-screen-xl mx-auto">
+			<div>
+				<Swiper
+					v-if="images.length"
+					:modules="[SwiperAutoplay, SwiperEffectCreative]"
+					:slides-per-view="1"
+					loop
+					:effect="'creative'"
+					class="max-w-[63.2rem] h-fit w-full rounded-[1.6rem] overflow-hidden relative"
+					:creative-effect="{
+						prev: {
+							shadow: false,
+							translate: [
+								'-20%', 0, -1
+							],
+						},
+						next: {
+							translate: [
+								'100%', 0, 0
+							],
+						},
+					}"
+					@swiper="setControlledSwiper"
+				>
+					<Indicators
+						class="absolute bottom-16 left-0 z-[2] w-full justify-center items-center"
+						:length="images.length"
+						size="12px"
+						:active-indicator-index="controlledSwiper.realIndex"
+						@on-click="controlledSwiper?.slideTo($event)"
+					/>
+					<SwiperSlide
+						v-for="image in images"
+						:key="image.attributes.url"
+						class="!rounded-[1.6rem] !overflow-hidden max-w-[63.2rem] w-full lg:"
+					>
+						<NuxtImg
+							provider="cloudinary"
+							class="w-full max-w-[63.2rem] lg rounded-[1.6rem] z-[2] relative mx-auto"
+							:src="image.attributes.hash"
+							quality="85"
+							width="632"
+							height="484"
+						/>
+					</SwiperSlide>
+				</Swiper>
+
+				<div class="mt-8 md:mt-16 max-w-[63.2rem] mx-auto grid grid-cols-3 gap-16">
+					<NuxtImg
+						v-for="image in property.images.data.slice(Math.max(property.images.data.length - 3, 1))"
+						:key="image.attributes.hash"
+						provider="cloudinary"
+						class="rounded-[1.6rem]"
+						:src="image.attributes.hash"
+						quality="85"
+						width="200"
+						height="160"
+					/>
+				</div>
+			</div>
+
+			<div class="bg-primary-purple text-white rounded-[4rem] p-24 md:p-48 lg:h-[47.1rem]">
+				<Capsule
+					:available-from="property.availableFrom"
+					class="mb-16"
+				/>
+				<h1 class="text-h5 mb-16 md:text-h3">{{ property.address }}</h1>
+				<div class="flex items-center mb-24 md:mb-32">
+					<h3 class="text-h5 md:text-h3 text-primary-yellow mr-8">{{ property.price }}</h3>
+					<h3 class="text-button md:text-h5">per month</h3>
+				</div>
+
+				<div class="flex flex-wrap gap-24 md:gap-32 mb-24 md:mb-40">
+					<div class="flex items-center">
+						<IconBathroomWithBackground class="md:w-56 md:mr-16 mr-8 w-44"/>
+						<div>
+							<p class="text-body-3 md:mb-4 md:text-button">Bedrooms</p>
+							<p class="text-h6 md:text-h4">{{ property.bedrooms }}</p>
+						</div>
+					</div>
+					<div class="flex items-center">
+						<IconBathroomWithBackground class="md:w-56 md:mr-16 mr-8 w-44"/>
+						<div>
+							<p class="text-body-3 md:mb-4 md:text-button">Bathrooms</p>
+							<p class="text-h6 md:text-h4">{{ property.bathrooms }}</p>
+						</div>
+					</div>
+				</div>
+
+				<Button
+					to="/contact"
+					class="w-full text-center"
+				>
+					Schedule a viewing
+				</Button>
+			</div>
+		</div>
 	</div>
 
-	<SectionSimpleYellowBackground
-		title="Rent your property for maximum return"
-		subtitle="Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus."
-		cta-text="Get valuation"
-		cta-link="/valuation"
-	/>
+	<div class="section-padding mb-64 mt-40 md:mt-80 md:mb-120">
+		<div class="max-w-screen-xl mx-auto">
+			<div class="max-w-[63.2rem]">
+				<h3 class="text-h5 md:text-h4 mb-12 md:mb-16">About this property</h3>
+				<p class="text-body-3 md:text-body-1 text-gray">{{ property.about }}</p>
+			</div>
+		</div>
+	</div>
 
-	<TestimonialsSection />
+	<div class="max-w-screen-xl mx-auto separator-vertical"/>
+
+	<div
+		v-if="similarProperties.length"
+		class="section-padding mb-64 mt-40 md:mt-80 md:mb-120"
+	>
+		<div class="max-w-screen-xl mx-auto">
+			<h2 class="text-h4 md:text-h2 mb-32 md:mb-56 text-center">Similar properties in this area</h2>
+			<PropertyCardsSetOf3 :properties="similarProperties"/>
+		</div>
+	</div>
 
 	<SubscribeSection />
 </template>

@@ -30,7 +30,7 @@
 	}
 
 	@font-face {
-		font-family: 'Inter SemiBold';
+		font-family: 'Inter-SemiBold';
 		src: url(~/assets/fonts/Inter-SemiBold.woff2);
 		font-weight: 600;
 	}
@@ -43,7 +43,7 @@
 	}
 
 	button {
-		font-family: 'Inter SemiBold';
+		font-family: 'Inter-SemiBold';
 		font-weight: 600;
 
 		@apply text-button;
@@ -71,7 +71,12 @@
 
 	h6 {
 		@apply text-h6-mobile;
-		font-family: 'Inter SemiBold';
+		font-family: 'Inter-SemiBold';
+	}
+
+	.text-h6 {
+		@apply text-h6-mobile;
+		font-family: 'Inter-SemiBold';
 	}
 
 	@screen md {
@@ -103,7 +108,7 @@
 	}
 
 	.btn-primary {
-		@apply bg-primary-yellow px-24 py-16 rounded-full hover:opacity-80 transition-opacity text-primary-black w-full text-button font-bold;
+		@apply bg-primary-yellow px-24 py-16 rounded-full hover:opacity-80 transition-opacity text-primary-black w-full text-button font-bold text-center h-fit font-['Inter-SemiBold'];
 	}
 
 	.body-1-gray {
@@ -132,6 +137,10 @@
 
 	.separator-horizontal {
 		@apply w-[1px] bg-secondary-platinum h-full;
+	}
+
+	.separator-vertical {
+		@apply h-[1px] bg-secondary-platinum w-full;
 	}
 
 	@screen md {

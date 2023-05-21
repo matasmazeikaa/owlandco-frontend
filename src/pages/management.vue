@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import propertyManagementIcon from '@/assets/icons/property-management.svg';
+import quarterlyReports from '@/assets/icons/report.svg';
 import supportIcon from '@/assets/icons/support.svg';
 import tenantsManagementIcon from '@/assets/icons/tenants-search-management.svg';
 
 const INVESTMENT_HERO_SECTION = {
-	title: 'Invest in property to build your future wealth with Owlandco',
+	title: 'Property management with Owlandco brings peace of mind and safety',
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
 	ctaText: 'Contact us',
 	ctaLink: '/contact',
@@ -42,15 +42,15 @@ const INVESTMENT_PAGE_SECTION_STEPS = {
 };
 
 const INVESTMENT_PAGE_SECTION_APPROACH = {
-	title: 'Thoughtful approach toward property investment allows us to builds wealth and safety for our clients',
+	title: 'Property management that gives you safety of your property and the maximum return of rent',
 	subtitle: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
 	firstSubItem: {
-		title: '500+',
-		subtitle: 'property valuations',
+		title: '100+',
+		subtitle: 'residential properties under our management',
 	},
 	secondSubItem: {
-		title: '£2.5M',
-		subtitle: 'completed investments',
+		title: '10+ years',
+		subtitle: 'experience in the residential property management',
 	},
 	image: '/assets/images/woman-typing.png',
 	imageAlt: 'woman typing about investments on a computer',
@@ -68,12 +68,12 @@ const SERVICES_SECTION = {
 		{
 			title: '24/7 Communication',
 			subtitle: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-			icon: propertyManagementIcon,
+			icon: supportIcon,
 		},
 		{
 			title: 'Quarterly Reports',
 			subtitle: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-			icon: supportIcon,
+			icon: quarterlyReports,
 		},
 	],
 	ctaText: 'Learn more',

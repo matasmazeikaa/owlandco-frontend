@@ -1,5 +1,5 @@
 const APP_META = {
-	title: 'myApp',
+	title: 'Owl & Co',
 	description: 'myApp',
 	favicon: '/favicon.ico',
 	url: 'https://myapp.com',

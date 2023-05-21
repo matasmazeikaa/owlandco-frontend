@@ -22,7 +22,7 @@ defineProps<Props>();
 					{{ subtitle }}
 				</p>
 
-				<div class="flex mb-24">
+				<div class="flex">
 					<Button :to="ctaLink">{{ ctaText }}</Button>
 				</div>
 			</div>

@@ -28,6 +28,13 @@ const {
 	length: TESTIMONIALS_SECTION.testimonials.length,
 	items: TESTIMONIALS_SECTION.testimonials,
 });
+
+const swiperInstance = useSwiper();
+
+const controlledSwiper = ref<typeof swiperInstance>({});
+const setControlledSwiper = (swiper: any) => {
+	controlledSwiper.value = swiper;
+};
 </script>
 
 <template>
@@ -40,15 +47,35 @@ const {
 				alt=""
 			/>
 			<div class="max-w-[80rem] text-left">
-				<Transition
-					name="fade"
-					mode="out-in"
+				<Swiper
+					:slides-per-view="1"
+					loop
+					:effect="'creative'"
+					:creative-effect="{
+						prev: {
+							shadow: false,
+							translate: [
+								'-20%', 0, -1
+							],
+						},
+						next: {
+							translate: [
+								'100%', 0, 0
+							],
+						},
+					}"
+					@swiper="setControlledSwiper"
 				>
-					<div :key="activeTestimonial.text">
-						<h3 class="text-h4 md:text-h3 mb-16 md:mb-32">{{ activeTestimonial.text }}</h3>
-						<h6 class="mb-32 md:mb-54">{{ activeTestimonial.fullName }}</h6>
-					</div>
-				</Transition>
+					<SwiperSlide
+						v-for="testimonial in TESTIMONIALS_SECTION.testimonials"
+						:key="testimonial.fullName"
+					>
+						<div :key="activeTestimonial.text">
+							<h3 class="text-h4 md:text-h3 mb-16 md:mb-32">{{ testimonial.text }}</h3>
+							<h6 class="mb-32 md:mb-54">{{ testimonial.fullName }}</h6>
+						</div>
+					</SwiperSlide>
+				</Swiper>
 
 				<div class="flex items-center gap-24">
 					<ArrowRight
@@ -56,19 +83,19 @@ const {
 						role="button"
 						alt="previous testimonial"
 						aria-label="previous testimonial"
-						@click="goToPrevTestimonial"
+						@click="controlledSwiper.slidePrev()"
 					/>
 					<Indicators
-						:active-indicator-index="activeTestimonialIndex"
+						:active-indicator-index="controlledSwiper.realIndex"
 						:length="TESTIMONIALS_SECTION.testimonials.length"
-						@on-click="setCurrentTestimonial"
+						@on-click="controlledSwiper?.slideTo($event)"
 					/>
 					<ArrowRight
 						class="cursor-pointer hover:opacity-75 transition-opacity"
 						role="button"
 						alt="next testimonial"
 						aria-label="next testimonial"
-						@click="goToNextTestimonial"
+						@click="controlledSwiper.slideNext()"
 					/>
 				</div>
 			</div>

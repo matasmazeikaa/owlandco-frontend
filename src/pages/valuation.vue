@@ -25,6 +25,8 @@ const VALUATION_PAGE_SECTION_STEPS = {
 	<SectionSteps
 		:title="VALUATION_PAGE_SECTION_STEPS.title"
 		:steps="VALUATION_PAGE_SECTION_STEPS.steps"
+		is-arrows
+		no-separators
 	/>
 	<TestimonialsSection />
 	<SubscribeSection />

@@ -1,6 +1,9 @@
 lockfileVersion: '6.0'
 
 dependencies:
+  body-scroll-lock:
+    specifier: 4.0.0-beta.0
+    version: 4.0.0-beta.0
   dayjs:
     specifier: ^1.11.7
     version: 1.11.7
@@ -2499,7 +2502,7 @@ packages:
   /@harlanzw/nuxt-kit-extras@0.3.1:
     resolution: {integrity: sha512-gRVl2yeza3JQN3GIQt9bpkEBC5i/axZTrKnfDVro9igH1tFCyavhREEs1geezThr5TO1eL0Uv+B6o6fwzoddmg==}
     dependencies:
-      '@nuxt/kit': /@nuxt/kit-edge@3.5.0-28066965.d077c10c
+      '@nuxt/kit': /@nuxt/kit-edge@3.5.1-28074682.25c15013
       ufo: 0.7.11
     transitivePeerDependencies:
       - rollup
@@ -2755,11 +2758,11 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/kit-edge@3.5.0-28066965.d077c10c:
-    resolution: {integrity: sha512-aREcHnPVgIMr5iYz5aMiybIAgQv+FnbKnQ0QgnaxVYkTifAneMgGHjsxk6IUWz0HDFJYyVlRW9NRCtl1cUB2OQ==}
+  /@nuxt/kit-edge@3.5.1-28074682.25c15013:
+    resolution: {integrity: sha512-2PwBFoH6RSi4lWCDJgu6JNvBiqZPFMIinOdOA8pcNmHEXjuc4HZf/Dx5UitOZY/1wx8DIHqN3/xvIFaifzwwVw==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
-      '@nuxt/schema': /@nuxt/schema-edge@3.5.0-28066965.d077c10c
+      '@nuxt/schema': /@nuxt/schema-edge@3.5.1-28074682.25c15013
       c12: 1.4.1
       consola: 3.1.0
       defu: 6.1.2
@@ -2904,8 +2907,8 @@ packages:
       - webpack
     dev: true
 
-  /@nuxt/schema-edge@3.5.0-28066965.d077c10c:
-    resolution: {integrity: sha512-iERShgSX8w0uHB1xgD8JmvnFs5SFkrFIrmiNgHlvf2rNxXLr88YKp3R4cSG7Rn0JIGRno+tmPm2BS17JKqBj6Q==}
+  /@nuxt/schema-edge@3.5.1-28074682.25c15013:
+    resolution: {integrity: sha512-o8vWmnTJfJDWNlytgHyXm8lxLfGIxuCO7VyGEv433cUTH0P/4r0NRaLggj6bJjHy3W3hFhhGP2j3p9379w3W/w==}
     engines: {node: ^14.18.0 || >=16.10.0}
     dependencies:
       defu: 6.1.2
@@ -6485,6 +6488,10 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /body-scroll-lock@4.0.0-beta.0:
+    resolution: {integrity: sha512-a7tP5+0Mw3YlUJcGAKUqIBkYYGlYxk2fnCasq/FUph1hadxlTRjF+gAcZksxANnaMnALjxEddmSi/H3OR8ugcQ==}
+    dev: false
 
   /bonjour-service@1.1.1:
     resolution: {integrity: sha512-Z/5lQRMOG9k7W+FkeGTNjh7htqn/2LMnfOvBZ8pynNZCM9MwkQkI3zeI4oz09uWdcgmgHugVvBqxGg4VQJ5PCg==}

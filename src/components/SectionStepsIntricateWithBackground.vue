@@ -12,17 +12,17 @@ defineProps<Props>();
 
 <template>
 	<div class="section-padding py-64 md:py-80 lg:py-120 bg-primary-purple text-white text-center">
-		<div class="max-w-screen-xl mx-auto text-center">
+		<div class="max-w-screen-xl mx-auto text-left md:text-center">
 			<div class="md:mb-56 mb-32">
 				<h2 class="text-h4 md:text-h2 mb-16"> {{ title }} </h2>
-				<p class="body-1-gray-french mx-auto max-w-[55.6rem]"> {{ subtitle }} </p>
+				<p class="body-1-gray-french  md:mx-auto max-w-[55.6rem]"> {{ subtitle }} </p>
 			</div>
 
-			<div class="flex flex-col gap-64 md:flex-row items-center w-full justify-between mb-32 md:mb-56">
+			<div class="grid grid-cols-1 mb-32 md:mb-56 md:grid-cols-3 gap-x-[13.6rem] gap-y-64">
 				<div
 					v-for="item in items"
 					:key="item.title"
-					class="relative md:flex md:w-1/3 items-center first:pl-0 last:pr-0  after:box-content after:absolute after:left-0 after:-bottom-32 last:after:hidden after:w-full after:h-[0.5px] after:bg-primary-dark-purple"
+					class="relative md:flex items-center first:pl-0 last:pr-0 after:-right-[6.8rem] after:h-full after:w-[0.5px] after:absolute last:after:hidden after:bg-primary-dark-purple"
 				>
 					<div class="text-left md:max-w-[33.6rem]">
 						<img

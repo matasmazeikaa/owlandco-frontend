@@ -2,24 +2,26 @@
 import propertyManagementIcon from '@/assets/icons/property-management.svg';
 import supportIcon from '@/assets/icons/support.svg';
 import tenantsManagementIcon from '@/assets/icons/tenants-search-management.svg';
-import { IProperty } from '@/types';
+import {
+	IProperty, PaginationByPage,
+} from '@/types';
 
 const RENTED_PROPERTIES_INFO_BAR_DATA = [
 	{
-		title: 'Rented Properties',
-		value: '3',
+		title: 'properties for rent',
+		value: '75',
 	},
 	{
-		title: 'Total Income',
-		value: '$ 1,200',
+		title: 'properties for sale',
+		value: '42',
 	},
 	{
-		title: 'Total Expenses',
-		value: '$ 200',
+		title: 'Property valuations',
+		value: '500+',
 	},
 	{
-		title: 'Total Profit',
-		value: '$ 1,000',
+		title: 'completed investments',
+		value: '£2.5M',
 	},
 ];
 
@@ -50,35 +52,29 @@ const SERVICES_SECTION = {
 const PROPERTIES_SECTION = {
 	title: 'Properties for rent',
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
-	properties: [
-		{
-			location: 'Fencepiece road, Ilford IG6',
-			price: '£1,500 per month',
-			available: true,
-			beds: 3,
-			bathrooms: 2,
-			images: [],
-		},
-		{
-			location: 'Fencepiece road, Ilford IG6',
-			price: '£3,500 per month',
-			available: 'Available from 21st of December 2013',
-			beds: 4,
-			bathrooms: 1,
-			images: [],
-
-		},
-		{
-			location: 'Fencepiece road, Ilford IG6',
-			price: '£6,100 per month',
-			available: true,
-			beds: 5,
-			bathrooms: 3,
-			images: [],
-		},
-	] as IProperty[],
-	allProperties: 24,
 };
+
+const { find } = useStrapi();
+
+const { data: properties } = await useAsyncData(
+	'homeProperties',
+	() => find<IProperty>('properties', {
+		populate: 'images',
+		sort: [
+			{
+				createdAt: 'desc',
+			},
+		],
+		pagination: {
+			start: 1,
+			limit: 3,
+		},
+	}),
+);
+
+const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1;
+
+console.log(properties);
 
 </script>
 
@@ -96,9 +92,19 @@ const PROPERTIES_SECTION = {
 					Felis vel sed arcu diam eget luctus.
 				</p>
 
-				<div class="flex mb-24 md:mb-[11.2rem] xl2:mb-[18.4rem]">
-					<Button class="mr-16">See rentals</Button>
-					<Button secondary>Get valuation</Button>
+				<div class="flex mb-24 md:mb-80">
+					<Button
+						class="mr-16"
+						to="/rentals"
+					>
+						See rentals
+					</Button>
+					<Button
+						secondary
+						to="/valuation"
+					>
+						Get valuation
+					</Button>
 				</div>
 
 				<RentedPropertiesInfoBar :items="RENTED_PROPERTIES_INFO_BAR_DATA"/>
@@ -113,29 +119,26 @@ const PROPERTIES_SECTION = {
 		:subtitle="SERVICES_SECTION.subtitle"
 		:items="SERVICES_SECTION.services"
 		:cta-link="SERVICES_SECTION.ctaLink"
-		:cta-text="SERVICES_SECTION.ctaLink"
+		:cta-text="SERVICES_SECTION.ctaText"
 	/>
 
-	<div class="section-padding py-64 md:py-80 lg:py-120 text-white text-center">
+	<div class="section-padding my-64 md:my-80 lg:my-120 text-white text-center">
 		<div class="max-w-screen-xl mx-auto text-center">
 			<div class=" mb-56">
 				<h2 class="text-h4 md:text-h2 text-primary-black mb-16"> {{PROPERTIES_SECTION.title}} </h2>
 				<p class="body-2-gray md:body-1-gray mx-auto max-w-[55.6rem]">{{PROPERTIES_SECTION.subtitle}}</p>
 			</div>
 
-			<div class="grid grid-flow-col overflow-x-scroll lg:flex items-center w-full justify-between mb-32 lg:mb-56">
-				<div
-					v-for="(property) in PROPERTIES_SECTION.properties"
-					:key="property.location"
-					class="flex w-[27.2rem] lg:w-1/3 items-center mx-8 lg:mx-[1.4rem] first:ml-0 last:mr-0"
-				>
-					<PropertyCard :property="property" />
-				</div>
-			</div>
+			<PropertyCardsSetOf3 :properties="properties?.data ?? []" />
 
-			<Button class="mb-16">See all properties</Button>
+			<Button
+				class="mb-16"
+				to="/rent"
+			>
+				See all properties
+			</Button>
 
-			<p class="text-body-3 text-gray">{{ PROPERTIES_SECTION.allProperties }} more properties for rent</p>
+			<p class="text-body-3 text-gray">{{ totalProperties }} more properties for rent</p>
 		</div>
 	</div>
 
@@ -176,27 +179,6 @@ const PROPERTIES_SECTION = {
 	position: absolute;
 	left: 0;
 	top: 0;
-}
-
-.image-cover-yellow {
-	background: linear-gradient(68.61deg, #E5CE68 0%, rgba(229, 206, 104, 0) 75.71%);
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 4rem;
-}
-
-.image-cover-yellow-dark {
-	background: linear-gradient(102.08deg, #E5CE68 0%, rgba(229, 206, 104, 0) 69.19%);
-	mix-blend-mode: screen;
-opacity: 0.44;
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
 }
 
 .fade-enter-active, .fade-leave-active {

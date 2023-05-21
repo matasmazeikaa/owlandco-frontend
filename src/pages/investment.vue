@@ -75,6 +75,8 @@ const INVESTMENT_PAGE_SECTION_STORY_TWO = {
 	<SectionSteps
 		:title="INVESTMENT_PAGE_SECTION_STEPS.title"
 		:steps="INVESTMENT_PAGE_SECTION_STEPS.steps"
+		is-arrows
+		no-separators
 	/>
 
 	<SimpleSectionTextLeftImageRight

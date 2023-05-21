@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import { FormKitMessages } from '@formkit/vue';
 
+import { ISubscriber } from '@/types';
+
 const SUBSCRIBE_SECTION = {
 	title: 'Subscribe to our newsletter',
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
@@ -20,10 +22,21 @@ const SUBSCRIBE_SECTION = {
 	],
 	alreadySubscribed: 500,
 };
+
+const {
+	fetchSubscribers,
+	alreadySubscribed,
+	hasSubmited,
+	isLoading,
+	submitForm,
+} = useSubscriber();
+
+fetchSubscribers();
+
 </script>
 
 <template>
-	<div class="section-padding text-white text-center py-64 md:py-80">
+	<div class="section-padding text-white text-center xl:mt-200 xl:mb-160 md:mt-160 mb:mb-120 my-64">
 		<div class="rounded-[1.6rem] section-padding relative max-w-screen-xl mx-auto bg-primary-purple py-48 md:py-96">
 			<NuxtImg
 				src="/assets/images/subscribe-background.png"
@@ -42,18 +55,28 @@ const SUBSCRIBE_SECTION = {
 				class="absolute w-[8rem] -right-[1%] -top-[4.5rem] md:-top-[7.5rem] md:right-[2%]  md:w-auto"
 			>
 
-			<div class="relative z-10">
+			<h1
+				v-if="hasSubmited"
+				class="mb-16"
+			>
+				Thank you for subscribing to our newsletter!
+			</h1>
+
+			<div
+				v-else
+				class="relative z-10 mb-32 md:mb-40"
+			>
 				<h1 class="mb-16"> {{ SUBSCRIBE_SECTION.title }} </h1>
 				<p class="text-secondary-french-gray body-2-gray-french md:text-body-1 mx-auto max-w-[55.6rem] mb-32 md:mb-40">{{ SUBSCRIBE_SECTION.subtitle }}</p>
 				<FormKit
 					type="form"
-					:classes="{ form: 'flex flex-col items-baseline md:flex-row justify-center gap-16 mb-32 md:mb-40' }"
+					:classes="{ form: 'flex flex-col items-baseline md:flex-row justify-center gap-16 ' }"
 					:submit-attrs="{
-						inputClass: 'btn-primary',
-						ignore: false
+						inputClass: 'hidden',
+						ignore: true
 					}"
 					help=""
-					submit-label="Subscribe now"
+					@submit="submitForm"
 				>
 					<div class="hidden">
 						<FormKitMessages/> <!-- 👀 form messages will appear here -->
@@ -72,17 +95,22 @@ const SUBSCRIBE_SECTION = {
 						placeholder="Email address"
 						validation="required|email"
 					/>
-				</FormKit>
 
-				<div class="flex justify-center text-left">
-					<NuxtImg
-						class="mr-16 w-120"
-						src="/assets/images/subscribed-people.png"
-					/>
-					<div>
-						<p class="text-button">{{ SUBSCRIBE_SECTION.alreadySubscribed }}+</p>
-						<p class="text-body-3 text-secondary-french-gray">already subscribed</p>
-					</div>
+					<Button
+						:is-loading="isLoading"
+					>
+						Subscribe now
+					</Button>
+				</FormKit>
+			</div>
+			<div class="flex justify-center text-left">
+				<NuxtImg
+					class="mr-16 w-120"
+					src="/assets/images/subscribed-people.png"
+				/>
+				<div>
+					<p class="text-button">{{ alreadySubscribed }}+</p>
+					<p class="text-body-3 text-secondary-french-gray">already subscribed</p>
 				</div>
 			</div>
 		</div>
@@ -94,7 +122,8 @@ const SUBSCRIBE_SECTION = {
 	background: url(/assets/images/subscribe-background.png) no-repeat center;
 }
 
-.formkit-input[type="submit"] {
+[data-type~="submit"] .formkit-outer {
 	display: none;
+
 }
 </style>

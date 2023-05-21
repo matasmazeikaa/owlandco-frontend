@@ -8,7 +8,7 @@ export default <DefaultConfigOptions>{
 				outer: 'w-full md:w-fit',
 				label: 'hidden',
 				inner: 'flex items-center relative text-secondary-gray-french border border-secondary-french-gray rounded-full mb-1 overflow-hidden focus-within:border-blue-500',
-				input: 'w-full leading-none outline-none h-[5.2rem] bg-transparent py-16 px-20 text-body-2 placeholder-secondary-french-gray text-secondary-french-gray',
+				input: 'w-full text-white leading-none outline-none h-[5.2rem] bg-transparent py-16 px-20 text-body-2 placeholder-secondary-french-gray text-secondary-french-gray',
 				help: 'text-xs text-gray-500',
 				messages: 'list-none p-0 mt-1 mb-0',
 				message: 'text-red-500 text-[1.2rem] mb-1',

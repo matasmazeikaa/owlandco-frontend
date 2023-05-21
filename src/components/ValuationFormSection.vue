@@ -61,11 +61,17 @@ const handleBedroomsInput = (value: string) => {
 		form.bedrooms = 9;
 	}
 };
+
+const {
+	submitForm,
+	isLoading,
+	hasSubmited,
+} = useSubscriber();
 </script>
 
 <template>
 	<div class="section-padding items-center max-w-screen-xl mx-auto pt-48 md:pt-80 grid grid-cols-1 lg:grid-cols-2 gap-40 lg:gap-80">
-		<div class="flex flex-col">
+		<div class="flex flex-col mb-auto">
 			<h1 class="text-h4 md:text-h1 mb-8 md:mb-24">{{ VALUATION_FORM_SECTION.title }}</h1>
 			<p class="body-2-gray md:body-1-gray mb-24 md:mb-40">{{ VALUATION_FORM_SECTION.subtitle }}</p>
 
@@ -86,17 +92,20 @@ const handleBedroomsInput = (value: string) => {
 
 		<div class="py-48 px-16 md:px-48 bg-primary-purple rounded-[4rem] h-max relative">
 			<div class="contact-form-background w-full h-full absolute top-0 left-0 pointer-events-none" />
-			<h2 class="mb-32 text-h4 md:text-h2 text-white">Send us a message</h2>
+			<h2 class="mb-32 text-h4 md:text-h2 text-white">{{ hasSubmited ?  "Thank you for your message, we will contact you shortly." : "Send us a message"}}</h2>
 			<FormKit
+				v-if="!hasSubmited"
 				type="form"
+
 				:classes="{ form: 'flex flex-col items-baseline gap-24' }"
 				:submit-attrs="{
-					inputClass: 'btn-primary w-full',
+					inputClass: 'hidden',
 					outer: '!w-full',
 					ignore: false
 				}"
 				help=""
 				submit-label="Send valuation request"
+				@submit="submitForm"
 			>
 				<div class="hidden">
 					<FormKitMessages/> <!-- 👀 form messages will appear here -->
@@ -120,7 +129,7 @@ const handleBedroomsInput = (value: string) => {
 				<FormKit
 					outer-class="!w-full"
 					type="text"
-					name="number"
+					name="phone"
 					label="Phone number"
 					placeholder="Phone number (optional)"
 					validation="number"
@@ -140,6 +149,7 @@ const handleBedroomsInput = (value: string) => {
 						label="I want to"
 						:options="['Rent', 'Sell']"
 						decorator-icon="happy"
+						name="valuationType"
 						validation="required|min:1"
 					/>
 				</div>
@@ -174,6 +184,11 @@ const handleBedroomsInput = (value: string) => {
 						</FormKit>
 					</div>
 				</div>
+				<Button
+					:is-loading="isLoading"
+				>
+					Subscribe now
+				</Button>
 			</FormKit>
 		</div>
 	</div>

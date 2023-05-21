@@ -4,46 +4,30 @@ const FOOTER = {
 	aboutSubtitle: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum aliquet accumsan porta lectus ridiculus in mattis.',
 	servicesLinks: [
 		{
-			title: 'Renting',
-			link: '/renting',
+			title: 'Rent',
+			link: '/rent',
 		},
 		{
-			title: 'Buying',
-			link: '/buying',
+			title: 'Management',
+			link: '/management',
 		},
 		{
-			title: 'Selling',
-			link: '/selling',
+			title: 'Investment',
+			link: '/investment',
 		},
 		{
-			title: 'Investing',
-			link: '/investing',
-		},
-		{
-			title: 'Landlords',
-			link: '/landlords',
+			title: 'Valuation',
+			link: '/valuation',
 		},
 	],
 	companyLinks: [
 		{
-			title: 'About us',
-			link: '/about-us',
-		},
-		{
-			title: 'Careers',
-			link: '/careers',
+			title: 'About',
+			link: '/about',
 		},
 		{
 			title: 'Contact us',
-			link: '/contact-us',
-		},
-		{
-			title: 'Privacy policy',
-			link: '/privacy-policy',
-		},
-		{
-			title: 'Terms & conditions',
-			link: '/terms-and-conditions',
+			link: '/contact',
 		},
 	],
 };

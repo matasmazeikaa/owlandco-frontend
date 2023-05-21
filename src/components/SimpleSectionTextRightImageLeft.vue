@@ -10,8 +10,8 @@ defineProps<Props>();
 
 <template>
 	<div class="section-padding mb-120 md:mb-200">
-		<div class=" max-w-screen-xl mx-auto flex flex-col md:flex-row items-center">
-			<div class='mb-32 md:mb-0 md:mr-64 w-full md:w-7/12 flex justify-end max-w-[63rem]'>
+		<div class=" max-w-screen-xl mx-auto flex flex-col-reverse md:flex-row items-center">
+			<div class='mt-32 md:mb-0 md:mr-64 w-full md:w-7/12 flex justify-end max-w-[63rem]'>
 				<NuxtImg
 					class='rounded-[4rem] w-full'
 					:src="image"

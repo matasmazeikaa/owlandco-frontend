@@ -37,7 +37,6 @@ const ABOUT_PAGE_SECTION_STEPS = {
 	/>
 
 	<SectionSteps
-		class="py-120 md:py-200"
 		:title="ABOUT_PAGE_SECTION_STEPS.title"
 		:steps="ABOUT_PAGE_SECTION_STEPS.steps"
 		is-lines

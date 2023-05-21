@@ -6,16 +6,17 @@ interface Props {
 		description: string;
 	}[];
 	isLines?: boolean;
-	noSeparators: boolean;
+	isArrows?: boolean;
+	noSeparators?: boolean;
 }
 
 defineProps<Props>();
 </script>
 
 <template>
-	<div class="section-padding my-120 md:my-[16rem]">
+	<div class="section-padding my-120 md:my-[16rem] xl:my-200">
 		<div class="mx-auto max-w-screen-xl">
-			<h2 class="mb-32 md:mb-56 text-center">{{ title }}</h2>
+			<h2 class="text-h4 md:text-h2 mb-32 md:mb-56 text-center">{{ title }}</h2>
 
 			<div class="grid grid-cols-1 md:grid-cols-3 gap-x-[13.6rem] gap-y-32 md:gap-y-56">
 				<div
@@ -35,11 +36,11 @@ defineProps<Props>();
 					/>
 
 					<LongArrowDown
-						v-if="index === 0 && !isLines && !noSeparators"
+						v-if="index === 0 && isArrows"
 						class="absolute -right-[11rem] top-[15rem]  hidden md:block "
 					/>
 					<LongArrowTop
-						v-if="index === 1 && !isLines && !noSeparators"
+						v-if="index === 1 && isArrows"
 						class="absolute -right-[11rem] top-[8rem]  hidden md:block"
 					/>
 				</div>
