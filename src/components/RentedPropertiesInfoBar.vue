@@ -4,15 +4,6 @@ import {
 	ref, reactive, watch,
 } from 'vue';
 
-interface Props {
-	items: {
-		title: string;
-		value: string;
-	}[];
-}
-
-defineProps<Props>();
-
 const propertiesForRent = reactive({
 	number: 0,
 });

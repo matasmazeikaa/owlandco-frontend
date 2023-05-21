@@ -20,7 +20,7 @@ const TESTIMONIALS_SECTION = {
 
 const swiperInstance = useSwiper();
 
-const controlledSwiper = ref<typeof swiperInstance>({});
+const controlledSwiper = ref<typeof swiperInstance>({} as typeof swiperInstance);
 const setControlledSwiper = (swiper: any) => {
 	controlledSwiper.value = swiper;
 };
@@ -62,7 +62,7 @@ const setControlledSwiper = (swiper: any) => {
 						v-for="testimonial in TESTIMONIALS_SECTION.testimonials"
 						:key="testimonial.fullName"
 					>
-						<div :key="activeTestimonial.text">
+						<div>
 							<h3 class="text-h4 md:text-h3 mb-16 md:mb-32">{{ testimonial.text }}</h3>
 							<h6 class="mb-32 md:mb-54">{{ testimonial.fullName }}</h6>
 						</div>

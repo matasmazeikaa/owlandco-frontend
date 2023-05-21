@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {
-	IProperty, PaginationByPage,
+	IProperty, PaginationByPage, Strapi4ResponseMany,
 } from '~/types';
 
 const RENT_PAGE_HERO_SECTION = {
@@ -73,9 +73,12 @@ const fetchProperties = async () => {
 				$contains: propertySearch.value,
 			},
 		},
-		sort: {
-			price: propertySort.value as any,
-		},
+		sort: [
+			// @ts-ignore
+			{
+				price: propertySort.value,
+			},
+		],
 		pagination: {
 			page: currentPage.value,
 			pageSize: currentPageSize.value,
@@ -87,7 +90,7 @@ const fetchProperties = async () => {
 	properties.value = {
 		...properties.value,
 		data,
-	};
+	} as Strapi4ResponseMany<IProperty>;
 };
 
 totalProperties.value = (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1;

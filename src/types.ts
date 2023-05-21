@@ -20,7 +20,7 @@ export interface ISubscriber {
 
 export interface IBreadcrumb {
 	name: string;
-	to: string;
+	to?: string;
 }
 
 export interface Strapi4Error {

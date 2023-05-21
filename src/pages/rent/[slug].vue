@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { IProperty } from '~/types';
+import {
+	IBreadcrumb, IProperty,
+} from '~/types';
+import {
+	SwiperAutoplay, SwiperEffectCreative,
+} from '~~/.nuxt/imports';
 
 export interface PaginationByPage {
   page: number
@@ -39,7 +44,7 @@ const property = computed(() => properties?.value?.data[0].attributes as IProper
 const similarProperties = computed(() => property?.value?.similarProperties?.data ?? []);
 const images = computed(() => property?.value?.images?.data ?? []);
 
-const breadcrumbs = computed(() => [
+const breadcrumbs = computed((): IBreadcrumb[] => [
 	{
 		name: 'Home',
 		to: '/',
@@ -55,7 +60,7 @@ const breadcrumbs = computed(() => [
 
 const swiperInstance = useSwiper();
 
-const controlledSwiper = ref<typeof swiperInstance>({});
+const controlledSwiper = ref<typeof swiperInstance>({} as typeof swiperInstance);
 const setControlledSwiper = (swiper: any) => {
 	controlledSwiper.value = swiper;
 };

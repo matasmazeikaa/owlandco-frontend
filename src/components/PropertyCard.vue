@@ -12,7 +12,7 @@ defineProps<Props>();
 
 const swiperInstance = useSwiper();
 
-const controlledSwiper = ref<typeof swiperInstance>({});
+const controlledSwiper = ref<typeof swiperInstance>({} as typeof swiperInstance);
 const setControlledSwiper = (swiper: any) => {
 	controlledSwiper.value = swiper;
 };
@@ -70,7 +70,7 @@ const setControlledSwiper = (swiper: any) => {
 		<div class="z-[3] relative text-white">
 			<Capsule
 				class="mb-20"
-				:availability="property.availableFrom"
+				:available-from="property.availableFrom"
 			/>
 			<h6 class="text-h6 mb-8">{{ property.address }}</h6>
 			<h5 class="text-h5 mb-16">£{{ property.price }} per month</h5>

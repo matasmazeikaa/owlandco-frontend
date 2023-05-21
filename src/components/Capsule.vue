@@ -1,6 +1,8 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs';
 
+import { CapsuleBackground } from '~/types';
+
 interface Props {
 	availableFrom: string;
 }

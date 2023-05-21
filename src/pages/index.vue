@@ -42,6 +42,7 @@ const { data: properties } = await useAsyncData(
 	() => find<IProperty>('properties', {
 		populate: 'images',
 		sort: [
+			// @ts-ignore
 			{
 				createdAt: 'desc',
 			},
@@ -101,9 +102,7 @@ const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)
 
 				<RentedPropertiesInfoBar
 					data-aos="fade-up"
-
 					data-aos-delay="300"
-					:items="RENTED_PROPERTIES_INFO_BAR_DATA"
 				/>
 			</div>
 		</div>
