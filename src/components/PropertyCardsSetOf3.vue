@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-import { Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types';
-
-import { IProperty } from '@/types';
+import {
+	IProperty, Strapi4ResponseData,
+} from '@/types';
 
 interface Props {
 	properties: Strapi4ResponseData<IProperty>[];

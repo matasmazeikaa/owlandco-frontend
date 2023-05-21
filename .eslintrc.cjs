@@ -224,9 +224,9 @@ module.exports = {
 			'error',
 			{
 				code: 140,
-				template: 9999,
+				template: 99999,
 				tabWidth: 2,
-				comments: 80,
+				comments: 99999,
 				ignorePattern: '',
 				ignoreComments: false,
 				ignoreTrailingComments: false,

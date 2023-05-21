@@ -47,8 +47,6 @@ const handleBedroomsInput = (value: string) => {
 
 	const numberValue = Number(value);
 
-	console.log(numberValue, 'numberValue');
-
 	if (Number.isNaN(numberValue)) {
 		return;
 	}

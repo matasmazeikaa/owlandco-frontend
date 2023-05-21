@@ -55,8 +55,6 @@ const { data: properties } = await useAsyncData(
 
 const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)?.total ?? 1;
 
-console.log(properties);
-
 </script>
 
 <template>

@@ -30,10 +30,8 @@ export const useSubscriber = () => {
 	const submitForm = async (data: any) => {
 		isLoading.value = true;
 
-		console.log(data);
-
 		try {
-			const { data: subscribedData } = await create('subscribers', {
+			await create('subscribers', {
 				...data,
 				...(data.valuationType ? {
 					valuationType: data.valuationType.join(', '),

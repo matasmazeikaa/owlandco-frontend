@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { Strapi4ResponseData } from '@nuxtjs/strapi/dist/runtime/types';
-
 import { IProperty } from '~/types';
 
 export interface PaginationByPage {
@@ -10,17 +8,10 @@ export interface PaginationByPage {
   withCount?: boolean
 }
 
-const DEFAULT_PAGINATION = {
-	page: 1,
-	pageSize: 9,
-};
-
 const { find } = useStrapi();
 const route = useRoute();
 
 const { slug } = route.params;
-
-console.log(route.params.slug);
 
 const { data: properties } = await useAsyncData(
 	'properties',
@@ -68,8 +59,6 @@ const controlledSwiper = ref<typeof swiperInstance>({});
 const setControlledSwiper = (swiper: any) => {
 	controlledSwiper.value = swiper;
 };
-
-console.log(property);
 </script>
 
 <template>

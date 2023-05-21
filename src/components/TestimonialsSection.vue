@@ -18,17 +18,6 @@ const TESTIMONIALS_SECTION = {
 	] as ITestimonial[],
 };
 
-const {
-	index: activeTestimonialIndex,
-	next: goToNextTestimonial,
-	prev: goToPrevTestimonial,
-	setIndex: setCurrentTestimonial,
-	activeItem: activeTestimonial,
-} = useCarousel<ITestimonial>({
-	length: TESTIMONIALS_SECTION.testimonials.length,
-	items: TESTIMONIALS_SECTION.testimonials,
-});
-
 const swiperInstance = useSwiper();
 
 const controlledSwiper = ref<typeof swiperInstance>({});

@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import { FormKitMessages } from '@formkit/vue';
 
-import { ISubscriber } from '@/types';
-
 const SUBSCRIBE_SECTION = {
 	title: 'Subscribe to our newsletter',
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',

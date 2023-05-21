@@ -14,7 +14,7 @@ declare module '#app' {
 
 declare module 'vue' {
   interface ComponentCustomProperties {
-    dayjs(date?: dayjs.ConfigType): dayjs.Dayjs
+    dayjs(): dayjs.Dayjs
   }
 }
 

@@ -23,19 +23,6 @@ const searchIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="2
 			</defs>
 			</svg>`;
 
-const expandMoreIcon = `
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-<g clip-path="url(#clip0_170_1679)">
-<path d="M15.8805 9.29L12.0005 13.17L8.12047 9.29C7.73047 8.9 7.10047 8.9 6.71047 9.29C6.32047 9.68 6.32047 10.31 6.71047 10.7L11.3005 15.29C11.6905 15.68 12.3205 15.68 12.7105 15.29L17.3005 10.7C17.6905 10.31 17.6905 9.68 17.3005 9.29C16.9105 8.91 16.2705 8.9 15.8805 9.29Z" fill="#181717"/>
-</g>
-<defs>
-<clipPath id="clip0_170_1679">
-<rect width="24" height="24" fill="white"/>
-</clipPath>
-</defs>
-</svg>
-`;
-
 const DEFAULT_PAGINATION = {
 	page: 1,
 	pageSize: 9,
@@ -63,8 +50,6 @@ const { data: properties } = await useAsyncData(
 	}),
 );
 
-console.log(properties);
-
 const {
 	currentPage,
 	currentPageSize,
@@ -78,8 +63,6 @@ const {
 });
 
 const fetchProperties = async () => {
-	console.log(propertySort.value);
-
 	const {
 		data,
 		meta,
@@ -98,8 +81,6 @@ const fetchProperties = async () => {
 			pageSize: currentPageSize.value,
 		},
 	});
-
-	console.log(meta);
 
 	totalProperties.value = (meta?.pagination as PaginationByPage)?.total ?? 1;
 
@@ -132,12 +113,6 @@ watch(propertySort, () => {
 watch(currentPage, () => {
 	fetchProperties();
 });
-
-const swiper = useSwiper();
-
-console.log(swiper, 'swiper');
-console.log(totalProperties, 'total properties');
-
 </script>
 
 <template>
