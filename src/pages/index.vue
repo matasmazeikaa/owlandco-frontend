@@ -70,6 +70,7 @@ const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)
 				>
 					Get the best property for your family with Owlandco
 				</h1>
+
 				<p
 					data-aos="fade-up"
 					data-aos-delay="100"
@@ -88,7 +89,7 @@ const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)
 				>
 					<Button
 						class="mr-16"
-						to="/rentals"
+						to="/rent"
 					>
 						See rentals
 					</Button>
@@ -169,7 +170,7 @@ const totalProperties = (properties.value?.meta?.pagination as PaginationByPage)
 }
 
 .main-bg {
-	background: url('~/assets/images/room.png');
+	background: url('/assets/images/room.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

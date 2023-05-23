@@ -19,7 +19,7 @@ const route = useRoute();
 const { slug } = route.params;
 
 const { data: properties } = await useAsyncData(
-	'properties',
+	'propertyPage',
 	() => find<IProperty>('properties', {
 		populate: [
 			'images',
@@ -221,7 +221,7 @@ const setControlledSwiper = (swiper: any) => {
 }
 
 .main-bg {
-	background: url('~/assets/images/room.png');
+	background: url('/assets/images/room.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

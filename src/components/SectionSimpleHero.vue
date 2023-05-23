@@ -47,7 +47,6 @@ defineProps<Props>();
 
 <style scoped>
 .main-bg {
-	background: url(v-bind(backgroundImage));
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

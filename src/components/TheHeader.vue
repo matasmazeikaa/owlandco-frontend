@@ -145,9 +145,6 @@ watch(isMobileMenuOpen, (value) => {
 </template>
 
 <style>
-
-* ONE */
-
 .col {
   display: block;
   float:left;

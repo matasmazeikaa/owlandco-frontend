@@ -2,23 +2,23 @@ import formkit from '@formkit/themes/tailwindcss';
 import headlessui from '@headlessui/tailwindcss';
 import type { Config } from 'tailwindcss';
 
+const rootDir = process.cwd();
+
 export default <Partial<Config>>{
 	content: [
-		'./src/assets/**/*.{vue,js,css}',
-		'./src/components/**/*.{vue,js}',
-		'./src/layouts/**/*.vue',
-		'./src/pages/**/*.vue',
-		'./src/server/**/*.{js,ts}',
-		'./src/plugins/**/*.{js,ts}',
-		'./formkit.config.ts',
+		`${rootDir}/nuxt.config.ts`,
+		`${rootDir}/formkit.config.ts`,
+		`${rootDir}/src/components/**/*.{vue,js,ts}`,
+		`${rootDir}/src/layouts/**/*.vue`,
+		`${rootDir}/src/pages/**/*.vue`,
+		`${rootDir}/src/composables/**/*.{js,ts}`,
+		`${rootDir}/src/plugins/**/*.{js,ts}`,
+		`${rootDir}/src/utils/**/*.{js,ts}`,
+		`${rootDir}/src/App.{js,ts,vue}`,
+		`${rootDir}/src/app.{js,ts,vue}`,
+		`${rootDir}/src/Error.{js,ts,vue}`,
+		`${rootDir}/src/error.{js,ts,vue}`,
 	],
-
-	// --primary-dark: '#181717',
-	// --primary-golden-gradient: 'linear-gradient(169.09deg, #AE862E 26.88%, #F7EF89 52.95%, #D2AC47 78.25%, #EDC968 101.25%);',
-	// --primary-yellow: '#E5CE68',
-	// --primary-tekhelet: '#3d348B',
-	// --primary-white: '#FFFFFF',
-	// --secondary-gray: '#5B5757',
 
 	theme: {
 		extend: {

@@ -245,7 +245,7 @@ watch(currentPage, () => {
 }
 
 .main-bg {
-	background: url('~/assets/images/room.png');
+	background: url('/assets/images/room.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;

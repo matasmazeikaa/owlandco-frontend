@@ -9,7 +9,7 @@ defineProps<Props>();
 </script>
 
 <template>
-	<div class="breadcrumbs mx-auto max-w-screen-lg flex gap-8 mt-40 mb-24 md:mt-48 md:mb-24">
+	<div class="breadcrumbs mx-auto max-w-screen-xl flex gap-8 mt-40 mb-24 md:mt-48 md:mb-24">
 		<NuxtLink
 			v-for="breadcrumb in breadcrumbs"
 			:key="breadcrumb.name"

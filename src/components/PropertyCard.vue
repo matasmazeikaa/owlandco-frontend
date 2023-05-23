@@ -23,7 +23,7 @@ const setControlledSwiper = (swiper: any) => {
 		<div class="card-background"/>
 
 		<Swiper
-			v-if="property.images.data?.length"
+			v-if="property?.images?.data?.length"
 			:modules="[SwiperAutoplay, SwiperEffectCreative]"
 			:slides-per-view="1"
 			loop
@@ -46,7 +46,7 @@ const setControlledSwiper = (swiper: any) => {
 		>
 			<Indicators
 				class="absolute bottom-16 left-0 z-[2] w-full justify-center items-center"
-				:length="property.images.data?.length"
+				:length="property?.images?.data?.length"
 				size="12px"
 				:active-indicator-index="controlledSwiper.realIndex"
 				@on-click="controlledSwiper?.slideTo($event)"

@@ -22,15 +22,11 @@ const SUBSCRIBE_SECTION = {
 };
 
 const {
-	fetchSubscribers,
 	alreadySubscribed,
 	hasSubmited,
 	isLoading,
 	submitForm,
 } = useSubscriber();
-
-fetchSubscribers();
-
 </script>
 
 <template>

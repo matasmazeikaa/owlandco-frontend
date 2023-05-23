@@ -96,7 +96,6 @@ const FOOTER = {
 				<p class="body-2-black">Owlandco {{ new Date().getFullYear() }}, All rights reserved</p>
 				<NuxtLink
 					class="body-2-black"
-					to="/privacy-policy"
 				>
 					Privacy policy
 				</NuxtLink>

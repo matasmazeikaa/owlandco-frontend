@@ -4,7 +4,7 @@ const ABOUT_US_HERO_SECTION = {
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
 	ctaLink: '/about',
 	ctaText: 'Contact us',
-	backgroundImage: '~/assets/images/page-about-us-hero-cover.png',
+	backgroundImage: '/assets/images/page-about-us-hero-cover.png',
 };
 
 const ABOUT_PAGE_SECTION_STEPS = {

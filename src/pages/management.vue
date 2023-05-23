@@ -8,7 +8,7 @@ const INVESTMENT_HERO_SECTION = {
 	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
 	ctaText: 'Contact us',
 	ctaLink: '/contact',
-	backgroundImage: '~/assets/images/room.png',
+	backgroundImage: '/assets/images/room.png',
 };
 
 const INVESTMENT_PAGE_SECTION_STEPS = {
@@ -136,7 +136,7 @@ const SERVICES_SECTION = {
 
 <style scoped>
 .main-bg {
-	background: url('~/assets/images/page-about-us-hero-cover.png');
+	background: url('/assets/images/page-about-us-hero-cover.png');
 	background-size: cover;
 	background-position: center;
 	background-repeat: no-repeat;
