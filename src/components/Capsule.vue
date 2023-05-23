@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 import dayjs from 'dayjs';
+import advancedFormat from 'dayjs/plugin/advancedFormat';
 
 import { CapsuleBackground } from '~/types';
+
+dayjs.extend(advancedFormat);
 
 interface Props {
 	availableFrom: string;
