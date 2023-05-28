@@ -98,9 +98,22 @@
 		font-family: 'Inter-SemiBold';
 	}
 
+	.text-h1,
+	.text-h2,
+	.text-h3,
+	.text-h4,
+	.text-h5 {
+		font-family: 'Satoshi Bold';
+	}
+
+
 	.text-h6 {
 		@apply text-h6-mobile;
 		font-family: 'Inter-SemiBold';
+	}
+
+	a:hover {
+		opacity: 0.75;
 	}
 
 

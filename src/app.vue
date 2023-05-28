@@ -16,15 +16,6 @@
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
-// const { findOne } = useStrapi();
-// const { data } = await useAsyncData(
-// 	'global',
-// 	() => findOne<any>('global', {
-// 		populate: '*',
-// 	}),
-// ); // You can also use <link> for styles
-
-// ..
 onMounted(() => {
 	AOS.init({
 		duration: 1000,

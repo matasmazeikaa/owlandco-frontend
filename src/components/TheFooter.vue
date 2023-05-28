@@ -66,7 +66,7 @@ const FOOTER = {
 				</div>
 
 				<div class="flex flex-col gap-16">
-					<p text="text-h6">Services</p>
+					<p class="text-h6">Services</p>
 					<NuxtLink
 						v-for="service in FOOTER.servicesLinks"
 						:key="service.title"
@@ -78,7 +78,7 @@ const FOOTER = {
 				</div>
 
 				<div class="flex flex-col gap-16">
-					<p text="text-h6">Services</p>
+					<p class="text-h6">Services</p>
 					<NuxtLink
 						v-for="company in FOOTER.companyLinks"
 						:key="company.title"
