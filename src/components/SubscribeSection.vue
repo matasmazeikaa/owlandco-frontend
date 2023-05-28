@@ -1,32 +1,24 @@
 <script lang="ts" setup>
 import { FormKitMessages } from '@formkit/vue';
 
-const SUBSCRIBE_SECTION = {
-	title: 'Subscribe to our newsletter',
-	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
-	subscriberImages: [
-		{
-			src: '/assets/images/subscriber-1.png',
-			alt: 'Subscriber 1',
-		},
-		{
-			src: '/assets/images/subscriber-2.png',
-			alt: 'Subscriber 2',
-		},
-		{
-			src: '/assets/images/subscriber-3.png',
-			alt: 'Subscriber 3',
-		},
-	],
-	alreadySubscribed: 500,
-};
-
 const {
 	alreadySubscribed,
 	hasSubmited,
 	isLoading,
 	submitForm,
 } = useSubscriber();
+
+const { findOne } = useStrapi();
+
+const { data: subscribeSection } = await useAsyncData(
+	'subscribe-section',
+	() => findOne<{ title: string, description: string }>('subscribe-section', {
+		populate: '*',
+	}),
+);
+
+const data = computed(() => subscribeSection.value?.data.attributes);
+
 </script>
 
 <template>
@@ -64,13 +56,13 @@ const {
 					class="mb-16"
 					data-aos="fade-up"
 				>
-					{{ SUBSCRIBE_SECTION.title }}
+					{{ data?.title }}
 				</h1>
 				<p
 					class="text-secondary-french-gray body-2-gray-french md:text-body-1 mx-auto max-w-[55.6rem] mb-32 md:mb-40"
 					data-aos="fade-up"
 				>
-					{{ SUBSCRIBE_SECTION.subtitle }}
+					{{ data?.description }}
 				</p>
 				<FormKit
 					type="form"

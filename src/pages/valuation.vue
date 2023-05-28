@@ -1,33 +1,25 @@
-<script lang="ts" setup>
-
-const VALUATION_PAGE_SECTION_STEPS = {
-	title: 'Property valuation process',
-	steps: [
-		{
-			title: 'Send Valuation Request',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-		},
-		{
-			title: 'Online or Real Visit',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-		},
-		{
-			title: 'Received Valuation',
-			description: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-		},
-	],
-};
-
+<script setup lang="ts">
+const {
+	sections,
+	hero,
+} = await useStrapiPage('valuation');
 </script>
 
 <template>
-	<ValuationFormSection />
-	<SectionSteps
-		:title="VALUATION_PAGE_SECTION_STEPS.title"
-		:steps="VALUATION_PAGE_SECTION_STEPS.steps"
-		is-arrows
-		no-separators
+	<ValuationFormSection
+		:title="hero?.title"
+		:subtitle="hero?.subtitle"
+		:values="hero?.values"
 	/>
+
+	<Component
+		v-bind="section"
+		:is="section.component"
+		v-for="section in sections"
+		:key="section.id"
+	/>
+
 	<TestimonialsSection />
+
 	<SubscribeSection />
 </template>

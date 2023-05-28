@@ -27,13 +27,13 @@
 			<div
 				class='w-full md:w-7/12 relative ml-auto flex justify-end max-w-[63rem]'
 			>
-				<div
-					class="image-cover-yellow"
-				/>
 				<NuxtImg
 					class='rounded-[4rem] w-full'
 					src="/assets/images/woman-typing.png"
 					alt="woman sittin on a computer "
+				/>
+				<div
+					class="image-cover-yellow"
 				/>
 				<div class="absolute left-24 bottom-24 md:left-32 md:bottom-32">
 					<p
@@ -51,15 +51,3 @@
 		</div>
 	</div>
 </template>
-
-<style scoped>
-.image-cover-yellow {
-	background: linear-gradient(68.61deg, #E5CE68 0%, rgba(229, 206, 104, 0) 75.71%);
-	position: absolute;
-	left: 0;
-	top: 0;
-	width: 100%;
-	height: 100%;
-	border-radius: 4rem;
-}
-</style>

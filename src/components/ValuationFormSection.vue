@@ -1,20 +1,15 @@
 <script lang="ts" setup>
-const VALUATION_FORM_SECTION = {
-	title: 'Find out your home’s value for sale or rent',
-	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
-	items: [
-		{
-			title: 'Trusted agents',
-			subtitle: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-			icon: '/assets/icons/badge-fill.svg',
-		},
-		{
-			title: 'Best Value for Your Property',
-			subtitle: 'Lorem ipsum dolor sit amet, consectetur adipis elit. Sit enim nec, proin faucibus nibh et sagittis a. Lacinia purus ac amet.',
-			icon: '/assets/icons/hand-money.svg',
-		},
-	],
-};
+interface Props {
+	title?: string;
+	subtitle?: string;
+	values?: {
+		title: string;
+		description: string;
+		icon: any;
+	}[];
+}
+
+defineProps<Props>();
 
 const form = reactive({
 	name: '',
@@ -76,7 +71,7 @@ const {
 
 				data-aos-delay="100"
 			>
-				{{ VALUATION_FORM_SECTION.title }}
+				{{ title }}
 			</h1>
 			<p
 				class="body-2-gray md:body-1-gray mb-24 md:mb-40"
@@ -84,23 +79,26 @@ const {
 
 				data-aos-delay="200"
 			>
-				{{ VALUATION_FORM_SECTION.subtitle }}
+				{{ subtitle }}
 			</p>
 
 			<div class="flex flex-col gap-40">
 				<div
-					v-for="item in VALUATION_FORM_SECTION.items"
+					v-for="item in values"
 					:key="item.title"
 					data-aos="fade-right"
 
 					data-aos-delay="300"
 				>
-					<img
-						:src="item.icon"
+					<NuxtImg
+						provider="cloudinary"
+						:src="item.icon.data.attributes.hash"
+						format="svg"
+						alt=''
 						class="mb-16 md:mb-24"
 					/>
-					<h5 class="text-h5">{{ item.title }}</h5>
-					<p class="body-2-gray">{{ item.subtitle }}</p>
+					<h5 class="text-h5 mb-8">{{ item.title }}</h5>
+					<p class="body-2-gray">{{ item.description }}</p>
 				</div>
 			</div>
 		</div>

@@ -59,11 +59,11 @@ defineProps<Props>();
 }
 
 .loader {
-width: 24px;
-height: 24px;
-border-radius: 50%;
-position: relative;
-animation: rotate 1s linear infinite
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+	position: relative;
+	animation: rotate 1s linear infinite
 }
 
 .loader::before , .loader::after {

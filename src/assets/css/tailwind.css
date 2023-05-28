@@ -2,6 +2,27 @@
 @tailwind components;
 @tailwind utilities;
 
+.main-bg-cover {
+	background: linear-gradient(180deg, #181717 0%, rgba(24, 23, 23, 0) 70.56%);
+	opacity: 0.88;
+	width: 100%;
+	height: 100vh;
+	border-radius: 4rem;
+	position: absolute;
+	left: 0;
+	top: 0;
+}
+
+.image-cover-yellow {
+	background: linear-gradient(68.61deg, #E5CE68 0%, rgba(229, 206, 104, 0) 75.71%);
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 4rem;
+}
+
 @layer base {
 	:root {
 		--primary-black: #181717;
@@ -79,6 +100,14 @@
 		font-family: 'Inter-SemiBold';
 	}
 
+	a {
+		transition: opacity 0.2s ease-in-out !important;
+	}
+
+	a:hover {
+		opacity: 0.75 !important;
+	}
+
 	@screen md {
 		h1 {
 			@apply text-h1;
@@ -142,6 +171,7 @@
 	.separator-vertical {
 		@apply h-[1px] bg-secondary-platinum w-full;
 	}
+
 
 	@screen md {
 		.section-padding {

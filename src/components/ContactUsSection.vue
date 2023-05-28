@@ -1,14 +1,16 @@
 <script lang="ts" setup>
-const HERO_CONTACT_US = {
-	title: 'Let’s talk about property or anything else that interests you',
-	email: 'info@owlandco.co.uk',
-	phoneNumber: '+44 1632 960838',
-	address: '48 Highfield Road TORQUAY TQ18 8NM',
-	work: {
-		days: 'Monday - Friday',
-		hours: '9:00 - 17:00',
-	},
-};
+interface Props {
+	title?: string;
+	email?: string;
+	phoneNumber?: string;
+	address?: string;
+	work?: {
+		hours: string;
+		days: string;
+	};
+}
+
+defineProps<Props>();
 
 const {
 	submitForm,
@@ -41,10 +43,10 @@ const {
 							Email address
 						</p>
 						<a
-							:href="`mailto:${HERO_CONTACT_US.email}`"
+							:href="`mailto:${email}`"
 							class="text-h6 md:text-h5 relative after:w-full after:content-normal after:absolute after:h-[2px] after:-bottom-4 after:left-0 after:bg-primary-black"
 						>
-							{{ HERO_CONTACT_US.email }}
+							{{ email }}
 						</a>
 					</div>
 					<div
@@ -53,7 +55,7 @@ const {
 						data-aos-delay="300"
 					>
 						<p class="text-button md:text-h6 mb-8">Phone number</p>
-						<p class="text-h6 md:text-h5">{{ HERO_CONTACT_US.phoneNumber }}</p>
+						<p class="text-h6 md:text-h5">{{ phoneNumber }}</p>
 					</div>
 					<div
 						data-aos="fade-up"
@@ -61,7 +63,7 @@ const {
 						data-aos-delay="400"
 					>
 						<p class="text-button md:text-h6 mb-8">Our address</p>
-						<p class="text-h6 md:text-h5">{{ HERO_CONTACT_US.address }}</p>
+						<p class="text-h6 md:text-h5">{{ address }}</p>
 					</div>
 					<div
 						data-aos="fade-up"
@@ -69,8 +71,8 @@ const {
 						data-aos-delay="500"
 					>
 						<p class="text-button md:text-h6 mb-8">Work hours</p>
-						<p class="text-h6 md:text-h5">{{ HERO_CONTACT_US.work.days }}</p>
-						<p class="text-h6 md:text-h5">{{ HERO_CONTACT_US.work.hours }}</p>
+						<p class="text-h6 md:text-h5">Monday - Friday</p>
+						<p class="text-h6 md:text-h5">9:00 - 17:00</p>
 					</div>
 				</div>
 			</div>

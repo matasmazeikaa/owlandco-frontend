@@ -3,15 +3,6 @@ import {
 	IProperty, PaginationByPage, Strapi4ResponseMany,
 } from '~/types';
 
-const RENT_PAGE_HERO_SECTION = {
-	title: 'Find the best property to rent for your family',
-	subtitle: 'Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus.',
-	ctaText: 'Get valuation',
-	ctaLink: '/valuation',
-	backgroundImage: '~/assets/images/page-about-us-hero-cover.png',
-
-};
-
 const searchIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 			<g clip-path="url(#clip0_170_1684)">
 			<path d="M15.5006 14H14.7106L14.4306 13.73C15.6306 12.33 16.2506 10.42 15.9106 8.39002C15.4406 5.61002 13.1206 3.39002 10.3206 3.05002C6.09063 2.53002 2.53063 6.09001 3.05063 10.32C3.39063 13.12 5.61063 15.44 8.39063 15.91C10.4206 16.25 12.3306 15.63 13.7306 14.43L14.0006 14.71V15.5L18.2506 19.75C18.6606 20.16 19.3306 20.16 19.7406 19.75C20.1506 19.34 20.1506 18.67 19.7406 18.26L15.5006 14ZM9.50063 14C7.01063 14 5.00063 11.99 5.00063 9.50002C5.00063 7.01002 7.01063 5.00002 9.50063 5.00002C11.9906 5.00002 14.0006 7.01002 14.0006 9.50002C14.0006 11.99 11.9906 14 9.50063 14Z" fill="#5B5757"/>
@@ -116,15 +107,16 @@ watch(propertySort, () => {
 watch(currentPage, () => {
 	fetchProperties();
 });
+
+const {
+	hero,
+	sections,
+} = await useStrapiPage('rent');
 </script>
 
 <template>
 	<SectionSimpleHero
-		:title="RENT_PAGE_HERO_SECTION.title"
-		:subtitle="RENT_PAGE_HERO_SECTION.subtitle"
-		:cta-link="RENT_PAGE_HERO_SECTION.ctaLink"
-		:cta-text="RENT_PAGE_HERO_SECTION.ctaText"
-		:background-image="RENT_PAGE_HERO_SECTION.backgroundImage"
+		v-bind="hero"
 		class="!mb-0"
 	/>
 
@@ -204,11 +196,11 @@ watch(currentPage, () => {
 		</div>
 	</div>
 
-	<SectionSimpleYellowBackground
-		title="Rent your property for maximum return"
-		subtitle="Lorem ipsum dolor sit amet consectetur. Neque facilisi tristique tristique netus est cras. Felis vel sed arcu diam eget luctus."
-		cta-text="Get valuation"
-		cta-link="/valuation"
+	<Component
+		:is="section.component"
+		v-for="section in sections"
+		:key="section.id"
+		v-bind="section"
 	/>
 
 	<TestimonialsSection />

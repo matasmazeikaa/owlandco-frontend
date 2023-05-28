@@ -88,3 +88,47 @@ export interface IProperty {
 		data: Strapi4ResponseData<IProperty>[];
 	};
 }
+
+export interface IPageUrl {
+	title: any;
+	url: any;
+}
+
+export interface ICTAButton {
+	text: string;
+	page: Strapi4ResponseSingle<IPageUrl>;
+}
+
+export interface IHero {
+	title?: string;
+	subtitle?: string;
+	backgroundImage?: Strapi4ResponseSingle<{hash: string}> | null;
+	ctaButton?: ICTAButton[];
+	values?: any;
+}
+
+export interface ISection {
+	title?: string;
+	description?: string;
+	ctaButton?: ICTAButton;
+	nameOverlay?: {
+		title: string;
+		subtitle: string;
+	}
+}
+
+export interface IPage {
+	hero: IHero;
+	section: ISection[];
+}
+
+export type StrapiPageResponse = Strapi4ResponseSingle<IPage> | null;
+
+export const COMPONENT_CMS_MAP: any = {
+	'shared.section-text-left-image-right': 'SectionTextLeftImageRight',
+	'shared.section-text-right-image-left': 'SectionTextRightImageLeft',
+	'shared.section-steps-with-background': 'SectionStepsWithBackground',
+	'shared.section-with-properties': 'SectionWithProperties',
+	'shared.section-yellow-background': 'SectionYellowBackground',
+	'shared.section-steps': 'SectionSteps',
+};

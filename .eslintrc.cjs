@@ -219,6 +219,7 @@ module.exports = {
 		],
 		'destructure-depth/max-depth': ['error'],
 		'class-methods-use-this': 'off',
+		'no-underscore-dangle': 'off',
 		'import/no-extraneous-dependencies': 'off',
 		'vue/max-len': [
 			'error',

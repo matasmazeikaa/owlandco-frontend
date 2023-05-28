@@ -3,13 +3,11 @@ interface Props {
 	title: string;
 	steps: {
 		title: string;
-		description: string;
+		subtitle: string;
 	}[];
-	isLines?: boolean;
-	isArrows?: boolean;
-	noSeparators?: boolean;
+	verticalSeparators?: boolean;
+	arrowSeparators?: boolean;
 }
-
 defineProps<Props>();
 </script>
 
@@ -35,19 +33,19 @@ defineProps<Props>();
 						<p class="text-button">{{ index + 1 }}</p>
 					</div>
 					<h3 class="text-h5 mb-8">{{ step.title }}</h3>
-					<p class="body-2-gray">{{ step.description }}</p>
+					<p class="body-2-gray">{{ step.subtitle }}</p>
 
 					<div
-						v-if="index !== steps.length - 1 && !noSeparators"
+						v-if="index !== steps.length - 1 && verticalSeparators"
 						class="separator-horizontal -right-[6.8rem] top-0 absolute hidden md:block"
 					/>
 
 					<LongArrowDown
-						v-if="index === 0 && isArrows"
+						v-if="index === 0 && arrowSeparators"
 						class="absolute -right-[11rem] top-[15rem]  hidden md:block "
 					/>
 					<LongArrowTop
-						v-if="index === 1 && isArrows"
+						v-if="index === 1 && arrowSeparators"
 						class="absolute -right-[11rem] top-[8rem]  hidden md:block"
 					/>
 				</div>

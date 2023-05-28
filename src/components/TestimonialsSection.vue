@@ -1,22 +1,17 @@
 <script setup lang="ts">
-import { ITestimonial } from '~/types';
+import { Strapi4ResponseSingle } from '~/types';
 
-const TESTIMONIALS_SECTION = {
-	testimonials: [
-		{
-			text: 'Lorem ipsum dolor  scelerisque aenean interdum cras nunc id pellentesque.',
-			fullName: 'John Doe',
-		},
-		{
-			text: 'Lorem ipsum dolor sit amet consectetur. Magna sodales scelerisque aenean interdum cras nunc id pellentesque.',
-			fullName: 'Sara Croft',
-		},
-		{
-			text: 'Lorem ipsum dolor sit. Magna sodales scelerisque aenean interdum cras nunc id pellentesque.',
-			fullName: 'John Ferio',
-		},
-	] as ITestimonial[],
-};
+const { findOne } = useStrapi();
+
+const { data: testimonialSection } = await useAsyncData(
+	'testiomonials',
+	() => findOne<{backgroundImage: Strapi4ResponseSingle<{hash: string}>, testimonials: {fullName: string, text: string}[]}>('testimonial-section', {
+		populate: '*',
+	}),
+);
+
+const backgroundImage = computed(() => testimonialSection.value?.data.attributes.backgroundImage.data.attributes.hash ?? '');
+const testimonials = computed(() => testimonialSection.value?.data.attributes.testimonials ?? []);
 
 const swiperInstance = useSwiper();
 
@@ -27,7 +22,15 @@ const setControlledSwiper = (swiper: any) => {
 </script>
 
 <template>
-	<div class="relative testimonials-section section-padding my-120 lg:my-160 2xl:my-200  py-[16rem] md:py-120 lg:py-[18rem] 2xl:py-[32rem] md:px-120">
+	<div class="relative section-padding my-120 lg:my-160 2xl:my-200  py-[16rem] md:py-120 lg:py-[18rem] 2xl:py-[32rem] md:px-120">
+		<NuxtImg
+			provider="cloudinary"
+			class="absolute inset-0 w-full h-full testimonials-background z-[-1]"
+			:src="backgroundImage"
+			quality="85"
+			sizes="xxl:100vw xl:100vw lg:100vw md:100vw sm:100vw xs:100vw"
+		/>
+
 		<div class="image-cover-yellow-dark" />
 		<div class="max-w-screen-xl mx-auto text-white relative z-100">
 			<img
@@ -59,7 +62,7 @@ const setControlledSwiper = (swiper: any) => {
 					@swiper="setControlledSwiper"
 				>
 					<SwiperSlide
-						v-for="testimonial in TESTIMONIALS_SECTION.testimonials"
+						v-for="testimonial in testimonials"
 						:key="testimonial.fullName"
 					>
 						<div>
@@ -79,7 +82,7 @@ const setControlledSwiper = (swiper: any) => {
 					/>
 					<Indicators
 						:active-indicator-index="controlledSwiper.realIndex"
-						:length="TESTIMONIALS_SECTION.testimonials.length"
+						:length="testimonials.length"
 						@on-click="controlledSwiper?.slideTo($event)"
 					/>
 					<ArrowRight
@@ -96,11 +99,9 @@ const setControlledSwiper = (swiper: any) => {
 </template>
 
 <style>
-.testimonials-section {
-	background: url('/assets/images/testimonials-background.png');
-	background-size: cover;
-	background-position: 80%;
-	background-repeat: no-repeat;
+.testimonials-background {
+	object-fit: cover;
+	object-position: 81%;
 }
 
 .image-cover-yellow-dark {
@@ -112,14 +113,5 @@ opacity: 0.44;
 	top: 0;
 	width: 100%;
 	height: 100%;
-}
-
-@screen md {
-	.testimonials-section {
-	background: url('/assets/images/testimonials-background.png');
-	background-size: cover;
-	background-position: center;
-	background-repeat: no-repeat;
-}
 }
 </style>

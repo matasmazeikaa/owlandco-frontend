@@ -97,14 +97,3 @@ onMounted(() => {
 		</div>
 	</div>
 </template>
-
-<style scoped>
-.separator {
-	width: 0.5px;
-	background: white;
-	height: 100%;
-	margin: 0 3vw;
-	height: 4rem;
-}
-
-</style>
