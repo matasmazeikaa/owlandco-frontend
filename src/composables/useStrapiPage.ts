@@ -1,5 +1,5 @@
 import {
-	IHero, ISection,
+	IHero, ISection, ISeo,
 } from '~/types';
 
 export const useStrapiPage = async (page: string) => {
@@ -7,7 +7,7 @@ export const useStrapiPage = async (page: string) => {
 
 	const { data } = await useAsyncData(
 		`${page}Page`,
-		() => findOne<{hero: IHero, section: ISection[]}>(`${page}-page`, {
+		() => findOne<{hero: IHero, section: ISection[], seo: ISeo}>(`${page}-page`, {
 			populate: [
 				'hero',
 				'hero.backgroundImage',
@@ -15,6 +15,7 @@ export const useStrapiPage = async (page: string) => {
 				'hero.values.icon',
 				'hero.ctaButton.page',
 				'ctaButton',
+				'seo',
 				'section.image',
 				'section.step',
 				'section.nameOverlay',
@@ -31,6 +32,21 @@ export const useStrapiPage = async (page: string) => {
 	const pageData = computed(() => data.value?.data.attributes);
 
 	const { sectionsWithComponents } = useStrapiSection(pageData.value?.section || []);
+
+	const seo = computed(() => pageData.value?.seo);
+
+	console.log(seo.value?.metaTitle);
+
+	useHead({
+		title: seo.value?.metaTitle,
+		meta: [
+			{
+				hid: 'description',
+				name: 'description',
+				content: seo.value?.metaDescription,
+			},
+		],
+	});
 
 	return {
 		hero: computed(() => pageData.value?.hero),

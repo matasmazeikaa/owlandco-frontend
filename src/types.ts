@@ -122,6 +122,11 @@ export interface IPage {
 	section: ISection[];
 }
 
+export interface ISeo {
+	metaTitle: string;
+	metaDescription: string;
+}
+
 export type StrapiPageResponse = Strapi4ResponseSingle<IPage> | null;
 
 export const COMPONENT_CMS_MAP: any = {

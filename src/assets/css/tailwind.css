@@ -42,18 +42,21 @@
 		font-family: 'Satoshi Bold';
 		src: url(~/assets/fonts/Satoshi-Bold.woff2);
 		font-weight: 700;
+		font-display: swap;
 	}
 
 	@font-face {
 		font-family: 'Inter Regular';
 		src: url(~/assets/fonts/Inter-Regular.woff2);
 		font-weight: 400;
+		font-display: swap;
 	}
 
 	@font-face {
 		font-family: 'Inter-SemiBold';
 		src: url(~/assets/fonts/Inter-SemiBold.woff2);
 		font-weight: 600;
+		font-display: swap;
 	}
 
 	html {
@@ -100,13 +103,6 @@
 		font-family: 'Inter-SemiBold';
 	}
 
-	a {
-		transition: opacity 0.2s ease-in-out !important;
-	}
-
-	a:hover {
-		opacity: 0.75 !important;
-	}
 
 	@screen md {
 		h1 {

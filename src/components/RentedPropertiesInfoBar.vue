@@ -64,7 +64,7 @@ onMounted(() => {
 			class="text-center justify-center w-full flex items-center relative"
 		>
 			<div>
-				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForRent.number.toFixed(0) }}</h3>
+				<p class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForRent.number.toFixed(0) }}</p>
 				<p class="button-1 lowercase">properties for rent</p>
 			</div>
 			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem]"/>
@@ -73,7 +73,7 @@ onMounted(() => {
 			class="text-center justify-center w-full flex items-center relative"
 		>
 			<div>
-				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForSale.number.toFixed(0) }}</h3>
+				<p class="text-h5 md:text-h3 whitespace-nowrap">{{ propertiesForSale.number.toFixed(0) }}</p>
 				<p class="button-1 lowercase">properties for sale</p>
 			</div>
 			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem] hidden lg:block"/>
@@ -82,7 +82,7 @@ onMounted(() => {
 			class="text-center justify-center w-full flex items-center relative"
 		>
 			<div>
-				<h3 class="text-h5 md:text-h3 whitespace-nowrap">{{ propertyValuations.number.toFixed(0) }}+</h3>
+				<p class="text-h5 md:text-h3 whitespace-nowrap">{{ propertyValuations.number.toFixed(0) }}+</p>
 				<p class="button-1 lowercase">property valuations</p>
 			</div>
 			<div class="separator-horizontal w-[0.5px] absolute -right-[-1px] h-[4rem]"/>
@@ -91,7 +91,7 @@ onMounted(() => {
 			class="text-center justify-center w-full flex items-center relative"
 		>
 			<div>
-				<h3 class="text-h5 md:text-h3 whitespace-nowrap">£{{ completedInvestments.number.toFixed(1) }}M</h3>
+				<p class="text-h5 md:text-h3 whitespace-nowrap">£{{ completedInvestments.number.toFixed(1) }}M</p>
 				<p class="button-1 lowercase">completed investments</p>
 			</div>
 		</div>

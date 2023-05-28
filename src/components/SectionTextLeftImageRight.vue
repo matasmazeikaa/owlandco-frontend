@@ -90,13 +90,13 @@ defineProps<Props>();
 				data-aos="fade-up"
 			>
 				<NuxtImg
-
 					provider="cloudinary"
 					quality="85"
 					sizes="xxl:100vw xl:100vw lg:100vw md:100vw sm:100vw xs:100vw"
 					preload
 					class='rounded-[4rem] w-full'
 					:src="image?.data?.attributes?.hash"
+					alt="about us image"
 				/>
 
 				<template v-if="nameOverlay?.title">

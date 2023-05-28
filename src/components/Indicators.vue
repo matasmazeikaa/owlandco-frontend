@@ -31,6 +31,7 @@ const isIndicatorActive = (index: number) => index === props.activeIndicatorInde
 				'hover:opacity-75 transition-opacity': !isIndicatorActive(index)
 			}"
 			role="button"
+			:aria-label="`Indicator ${index + 1}`"
 			@click="$emit('on-click', index)"
 		/>
 	</div>

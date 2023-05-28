@@ -38,7 +38,7 @@ const FOOTER = {
 		<div class="max-w-screen-xl mx-auto pt-80 md:pb-64 py-40">
 			<div class="footer-top-part">
 				<div class="mr-120 max-w-[41.6rem]">
-					<h5 class="mb-8 md:mb-16">About Owlandco</h5>
+					<p class="text-h5 mb-8 md:mb-16">About Owlandco</p>
 					<p class="body-2-gray mb-24">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam dictum aliquet accumsan porta lectus ridiculus in mattis.</p>
 					<div class="flex gap-16">
 						<img
@@ -66,7 +66,7 @@ const FOOTER = {
 				</div>
 
 				<div class="flex flex-col gap-16">
-					<h6>Services</h6>
+					<p text="text-h6">Services</p>
 					<NuxtLink
 						v-for="service in FOOTER.servicesLinks"
 						:key="service.title"
@@ -78,7 +78,7 @@ const FOOTER = {
 				</div>
 
 				<div class="flex flex-col gap-16">
-					<h6>Services</h6>
+					<p text="text-h6">Services</p>
 					<NuxtLink
 						v-for="company in FOOTER.companyLinks"
 						:key="company.title"
@@ -96,6 +96,7 @@ const FOOTER = {
 				<p class="body-2-black">Owlandco {{ new Date().getFullYear() }}, All rights reserved</p>
 				<NuxtLink
 					class="body-2-black"
+					to="/privacy-policy"
 				>
 					Privacy policy
 				</NuxtLink>

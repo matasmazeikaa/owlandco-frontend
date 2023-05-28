@@ -49,7 +49,8 @@ watch(isMobileMenuOpen, (value) => {
 				<NuxtLink
 					to="/"
 					class="w-[9.1rem] lg:w-[12.4rem] absolute lg:left-[6rem] -top-[1.6rem] lg:top-0 z-10 "
-					data-aos="slide-down"
+					data-aos="fade-down"
+					aria-label="Home"
 				>
 					<HeaderLogo class="w-full"/>
 				</NuxtLink>

@@ -29,6 +29,7 @@ const setControlledSwiper = (swiper: any) => {
 			:src="backgroundImage"
 			quality="85"
 			sizes="xxl:100vw xl:100vw lg:100vw md:100vw sm:100vw xs:100vw"
+			alt="people that gave testimonials in a background"
 		/>
 
 		<div class="image-cover-yellow-dark" />
@@ -66,8 +67,8 @@ const setControlledSwiper = (swiper: any) => {
 						:key="testimonial.fullName"
 					>
 						<div>
-							<h3 class="text-h4 md:text-h3 mb-16 md:mb-32">{{ testimonial.text }}</h3>
-							<h6 class="mb-32 md:mb-54">{{ testimonial.fullName }}</h6>
+							<p class="text-h4 md:text-h3 mb-16 md:mb-32">{{ testimonial.text }}</p>
+							<p class="mb-32 md:mb-54">{{ testimonial.fullName }}</p>
 						</div>
 					</SwiperSlide>
 				</Swiper>

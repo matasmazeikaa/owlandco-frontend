@@ -11,40 +11,42 @@ defineProps<Props>();
 </script>
 
 <template>
-	<NuxtLink
-		v-if="to"
-		class="btn-primary inline-block"
-		:class="{
-			'backdrop-blur-sm bg-white bg-opacity-10 text-white': secondary,
-			'bg-transparent border border-gray-200': white,
-			'bg-primary-black text-primary-yellow border-gray-200': black,
-		}"
-		:to="to"
-	>
-		<span class="text-button whitespace-pre"><slot /></span>
-	</NuxtLink>
-	<button
-		v-else
-		class="btn-primary relative"
-		:class="{
-			'backdrop-blur-sm bg-white bg-opacity-10 text-white': secondary,
-			'bg-transparent border border-gray-200': white,
-			'bg-primary-black text-primary-yellow border-gray-200': black,
-			'btn-primary--loading': isLoading,
-		}"
-	>
-		<Transition name="fade">
-			<div class=" absolute top-0 left-0 w-full h-full flex items-center justify-center">
-				<div
-					v-if="isLoading"
-					class="loader fadeIn"
-				/>
-			</div>
-		</Transition>
-		<span class="whitespace-pre">
-			<slot />
-		</span>
-	</button>
+	<div class="inline-flex">
+		<NuxtLink
+			v-if="to"
+			class="btn-primary inline-block"
+			:class="{
+				'backdrop-blur-sm bg-white bg-opacity-10 text-white': secondary,
+				'bg-transparent border border-gray-200': white,
+				'bg-primary-black text-primary-yellow border-gray-200': black,
+			}"
+			:to="to"
+		>
+			<span class="text-button whitespace-pre"><slot /></span>
+		</NuxtLink>
+		<button
+			v-else
+			class="btn-primary relative"
+			:class="{
+				'backdrop-blur-sm bg-white bg-opacity-10 text-white': secondary,
+				'bg-transparent border border-gray-200': white,
+				'bg-primary-black text-primary-yellow border-gray-200': black,
+				'btn-primary--loading': isLoading,
+			}"
+		>
+			<Transition name="fade">
+				<div class=" absolute top-0 left-0 w-full h-full flex items-center justify-center">
+					<div
+						v-if="isLoading"
+						class="loader fadeIn"
+					/>
+				</div>
+			</Transition>
+			<span class="whitespace-pre">
+				<slot />
+			</span>
+		</button>
+	</div>
 </template>
 
 <style>

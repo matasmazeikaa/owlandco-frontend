@@ -15,6 +15,7 @@ const {
 				quality="85"
 				sizes="xxl:100vw xl:100vw lg:100vw md:100vw sm:100vw xs:100vw"
 				preload
+				alt="room for rent"
 			/>
 			<div class="main-bg-cover"/>
 			<div class="pt-[4.4rem] pb-24 pr-24 pl-24 md:pb-80 md:pt-120 2xl:pt-[28.4rem] 2xl:pb-120 max-w-screen-xl mx-auto z-[3] relative flex flex-col justify-center items-center">

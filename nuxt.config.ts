@@ -1,6 +1,6 @@
 const APP_META = {
 	title: 'Owl & Co',
-	description: 'myApp',
+	description: 'Discover personalised property management and investment services in East London and Essex with Owl & Co, your trusted family-owned letting agency.',
 	favicon: '/favicon.ico',
 	url: 'https://myapp.com',
 	language: 'en',

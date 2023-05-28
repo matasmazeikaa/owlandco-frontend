@@ -27,6 +27,7 @@ const data = computed(() => subscribeSection.value?.data.attributes);
 			<NuxtImg
 				src="/assets/images/subscribe-background.png"
 				class="w-full h-full absolute left-0 top-0 z-0"
+				alt="subscriptions background"
 			/>
 
 			<img
@@ -108,6 +109,7 @@ const data = computed(() => subscribeSection.value?.data.attributes);
 				<NuxtImg
 					class="mr-16 w-120"
 					src="/assets/images/subscribed-people.png"
+					alt="already subscribed people"
 				/>
 				<div>
 					<p class="text-button">{{ alreadySubscribed }}+</p>

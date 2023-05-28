@@ -52,7 +52,7 @@ const setControlledSwiper = (swiper: any) => {
 				@on-click="controlledSwiper?.slideTo($event)"
 			/>
 			<SwiperSlide
-				v-for="image in property.images.data"
+				v-for="(image, index) in property.images.data"
 				:key="image.attributes.url"
 				class="!rounded-[1.6rem] !overflow-hidden w-[24rem] h-[16.8rem] lg:w-[36rem] lg:h-[24rem]"
 			>
@@ -63,6 +63,7 @@ const setControlledSwiper = (swiper: any) => {
 					quality="85"
 					width="600"
 					height="600"
+					:alt="`${property.address} - property image ${index}`"
 				/>
 			</SwiperSlide>
 		</Swiper>
@@ -72,13 +73,14 @@ const setControlledSwiper = (swiper: any) => {
 				class="mb-20"
 				:available-from="property.availableFrom"
 			/>
-			<h6 class="text-h6 mb-8">{{ property.address }}</h6>
-			<h5 class="text-h5 mb-16">£{{ property.price }} per month</h5>
+			<p class="text-h6 mb-8">{{ property.address }}</p>
+			<p class="text-h5 mb-16">£{{ property.price }} per month</p>
 			<div class="flex gap-16 mb-24">
 				<div class="flex items-center">
 					<img
 						class="mr-8 text-button"
 						src="@/assets/icons/bed.svg"
+						alt=""
 					/>
 					<p>{{ property.bedrooms }}</p>
 				</div>
@@ -86,6 +88,7 @@ const setControlledSwiper = (swiper: any) => {
 					<img
 						class="mr-8 text-button"
 						src="@/assets/icons/bath.svg"
+						alt=""
 					/>
 					<p>{{ property.bathrooms }}</p>
 				</div>
@@ -95,8 +98,9 @@ const setControlledSwiper = (swiper: any) => {
 				<NuxtLink
 					class="text-button flex gap-8 text-gray-french mr-8"
 					:to="`/rent/${property.slug}`"
+					:aria-label="`Learn more about ${property.address}`"
 				>
-					<span>Learn more</span>
+					Learn more
 					<ArrowRight class="text-button" />
 				</NuxtLink>
 			</div>
