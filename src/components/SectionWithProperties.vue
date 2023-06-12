@@ -22,8 +22,8 @@ const { data: properties } = await useAsyncData(
 			},
 		],
 		pagination: {
-			start: 1,
-			limit: 3,
+			start: 0,
+			limit: 2,
 		},
 	}),
 );
